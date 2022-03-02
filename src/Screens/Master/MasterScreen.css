@@ -1,0 +1,26 @@
+.master-screen-container {
+    height: 100vh;
+}
+
+.header-container {
+    height: 2.5vh;
+
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
+.master-screen-heading {
+    height: 5vh;
+
+    background-color: lightcoral;
+}
+
+.content-container {
+    border: 3px solid black;
+    background-color: rgb(243, 245, 245);
+    height: 90vh;
+}
+
+.footer-container {
+    height: 2.5vh;
+}

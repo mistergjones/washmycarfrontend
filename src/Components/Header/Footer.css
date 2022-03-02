@@ -1,0 +1,51 @@
+.footer-menu {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px;
+
+    position: fixed; /* Set the navbar to fixed position */
+    bottom: 0; /* Position the navbar at the bottom of the page */
+    width: 100%; /* Full width */
+}
+
+#item-0 {
+    background-color: #8d9f7c;
+    grid-row-start: 1;
+    grid-column-start: 1;
+
+    grid-row-end: 2;
+    grid-column-end: 2;
+}
+#item-1 {
+    background-color: #79da7a;
+    grid-row-start: 1;
+    grid-column-start: 2;
+
+    grid-row-end: 2;
+    grid-column-end: 3;
+}
+#item-2 {
+    background-color: #78abcd;
+    grid-row-start: 1;
+    grid-column-start: 5;
+
+    grid-row-end: 2;
+    grid-column-end: 6;
+}
+#item-3 {
+    background-color: #e997b7;
+    grid-row-start: 1;
+    grid-column-start: 4;
+
+    grid-row-end: 2;
+    grid-column-end: 5;
+}
+#item-4 {
+    background-color: #998bb9;
+    grid-row-start: 1;
+    grid-column-start: 3;
+
+    grid-row-end: 2;
+    grid-column-end: 4;
+}
