@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./ProfileForm.css";
 
 import useApi from "../../hooks/useApi";
@@ -8,18 +8,42 @@ import washersApi from "../../api/washers";
 import AuthContext from "../../context/authContext";
 import jwtService from "../../storage/jwt";
 
+import loadBMaps from "../../maps/bingMaps";
+
 export default function ProfileForm() {
     const { user, setUser } = useContext(AuthContext);
     const [checked, setChecked] = useState(false);
+
+    // obtain the Bing Maps address object resuilt
+    //const [bingMapsAddressObj, setAddress] = useState(null);
+
+    const splitAddressUpdateAddressFields = (result) => {
+        setformInputs({
+            ...formInputs,
+            ["inputStreetAddress"]: result.address.addressLine,
+            ["inputSuburb"]: result.address.locality,
+            ["inputState"]: result.address.adminDistrict,
+            ["inputPostcode"]: result.address.postalCode,
+        });
+    };
+    useEffect(() => {
+        window.selectedSuggestion = function (result) {
+            //setAddress(result);
+            splitAddressUpdateAddressFields(result);
+        };
+        loadBMaps(() => console.log("call back"));
+    }, []);
+
     // establish object for all Form Inputs
     const [formInputs, setformInputs] = useState({
-        inputFirstname: "",
-        inputLastname: "",
+        inputFirstname: user.firstname,
+        inputLastname: user.lastname,
         inputStreetAddress: "",
         inputSuburb: "",
         inputState: "",
         inputPostcode: "",
         inputMobile: "",
+        inputEmail: user.email,
         inputDOB: "",
         inputCarPhoto: "",
         inputBankName: "",
@@ -49,7 +73,6 @@ export default function ProfileForm() {
         setformInputs({
             ...formInputs,
             [inputName]: event.target.value,
-            inputEmail: user.email,
             credential_id: user.credential_id,
         });
     };
@@ -88,6 +111,8 @@ export default function ProfileForm() {
                 <label htmlFor="firstname">
                     Firstname:
                     <input
+                        style={{ backgroundColor: "#f7f7f5" }}
+                        readOnly
                         type="text"
                         name="inputFirstname"
                         placeholder="Firstname"
@@ -98,6 +123,8 @@ export default function ProfileForm() {
                 <label htmlFor="lastname">
                     Lastname:
                     <input
+                        style={{ backgroundColor: "#f7f7f5" }}
+                        readOnly
                         type="text"
                         name="inputLastname"
                         placeholder="Lastname"
@@ -105,19 +132,26 @@ export default function ProfileForm() {
                         value={formInputs.inputLastname}
                     />
                 </label>
-                <label htmlFor="streetAddresss">
-                    Street Address:
-                    <input
-                        type="text"
-                        name="inputStreetAddress"
-                        placeholder="Street Address"
-                        onChange={handleChange}
-                        value={formInputs.inputStreetAddress}
-                    />
-                </label>
+
+                <div id="searchBoxContainer">
+                    <label htmlFor="streetAddresss">
+                        Street Address:
+                        <input
+                            id="searchBox"
+                            type="text"
+                            name="inputStreetAddress"
+                            placeholder="Street Address"
+                            onChange={handleChange}
+                            value={formInputs.inputStreetAddress}
+                        />
+                    </label>
+                </div>
+
                 <label htmlFor="streetSuburb">
                     Suburb:
                     <input
+                        style={{ backgroundColor: "#f7f7f5" }}
+                        readOnly
                         type="text"
                         name="inputSuburb"
                         placeholder="Suburb"
@@ -128,6 +162,8 @@ export default function ProfileForm() {
                 <label htmlFor="state">
                     State:
                     <input
+                        style={{ backgroundColor: "#f7f7f5" }}
+                        readOnly
                         type="text"
                         name="inputState"
                         placeholder="State"
@@ -138,6 +174,8 @@ export default function ProfileForm() {
                 <label htmlFor="postcode">
                     Postcode:
                     <input
+                        style={{ backgroundColor: "#f7f7f5" }}
+                        readOnly
                         type="text"
                         name="inputPostcode"
                         placeholder="Postcode"
@@ -156,6 +194,20 @@ export default function ProfileForm() {
                         value={formInputs.inputMobile}
                     />
                 </label>
+
+                <label htmlFor="email">
+                    Email:
+                    <input
+                        style={{ backgroundColor: "#f7f7f5" }}
+                        readOnly
+                        type="email"
+                        name="inputEmail"
+                        placeholder="Your Email"
+                        onChange={handleChange}
+                        value={formInputs.inputEmail}
+                    />
+                </label>
+
                 <label htmlFor="carPhoto">
                     Car Image:
                     <input
