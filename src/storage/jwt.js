@@ -1,4 +1,4 @@
-import jwtDecode from "./node_modules/jwt-decode";
+import jwtDecode from "jwt-decode";
 import storageService from "./localStorage";
 
 const jwtService = {};

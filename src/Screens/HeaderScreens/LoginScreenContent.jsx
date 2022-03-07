@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 
+import useApi from "../../hooks/useApi";
+import usersApi from "../../api/users";
+
 export default function LoginScreenContent() {
     const [formInputs, setformInputs] = useState({
         inputEmail: "",
         inputPassword: "",
     });
+
+    // establish which specific API function we are invoking
+    const { request: postNewUserData } = useApi(usersApi.insertNewUser);
 
     // obtain the input name and update the value based on it
     const handleChange = (event) => {
@@ -15,9 +21,11 @@ export default function LoginScreenContent() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("handleSubmit -> firstname", formInputs);
+        // need to use the clien api to post the informatin
+        const stripeCheckoutSession = await postNewUserData(formInputs);
     };
     return (
         <div>
