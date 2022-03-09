@@ -5,6 +5,7 @@ import HomeScreen from "./Screens/HeaderScreens/HomeScreen";
 import LoginScreen from "./Screens/HeaderScreens/LoginScreen";
 import SignUpScreen from "./Screens/HeaderScreens/SignUpScreen";
 import ProfileScreen from "./Screens/ProfileScreen/ProfileScreenContent";
+import DashboardScreenOwner from "./Screens/DashboardScreens/DashboardScreenOwnerContent";
 import {
     Route,
     Routes,
@@ -36,6 +37,14 @@ function App() {
                         <Route
                             path={routes.PROFILE_OWNER}
                             element={<ProfileScreen />}
+                        />
+                        {/* <Route
+                            path={routes.DASHBOARD_WASHER}
+                            element={<DashboardScreen />}
+                        /> */}
+                        <Route
+                            path={routes.DASHBOARD_OWNER}
+                            element={<DashboardScreenOwner />}
                         />
                     </Routes>
                 </Router>

@@ -1,6 +1,7 @@
 import React from "react";
+import "./ProfileScreen.css";
 import MasterScreen from "../Master/MasterScreen";
-import ProfileScreenContent from "./ProfileScreen.css";
+import ProfileScreenContent from "./ProfileScreenContent";
 
 export default function ProfileScreen() {
     return (

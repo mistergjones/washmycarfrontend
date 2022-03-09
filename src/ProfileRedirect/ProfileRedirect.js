@@ -16,14 +16,14 @@ function ProfileRedirect(props) {
     const { user } = useContext(AuthContext);
     // console.log("user profile rediderct = ", user);
     if (user && user.type === "O") {
-        return user.hasProfile ? (
+        return user.is_profile_established ? (
             <Navigate to={routes.DASHBOARD_OWNER} />
         ) : (
             <Navigate to={routes.PROFILE_OWNER} />
         );
     }
     if (user && user.type === "W") {
-        return user.hasProfile ? (
+        return user.is_profile_established ? (
             <Navigate to={routes.DASHBOARD_WASHER} />
         ) : (
             <Navigate to={routes.PROFILE_WASHER} />

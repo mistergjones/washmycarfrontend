@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./SignUpForm.css";
 import * as Yup from "yup";
 
@@ -8,9 +8,16 @@ import usersApi from "../../api/users";
 import AuthContext from "../../context/authContext";
 import jwtService from "../../storage/jwt";
 import ProfileRedirect from "../../ProfileRedirect/ProfileRedirect";
+import axios from "axios";
 
 export default function SignUpForm() {
     const { user, setUser } = useContext(AuthContext);
+
+    const [error, setError] = useState(null);
+    const [result, setResult] = useState(null);
+    const [widget, setWidget] = useState(null);
+    const [profileUrl, setProfileUrl] = useState("");
+
     // establish object for all Form Inputs
     const [formInputs, setformInputs] = useState({
         inputFirstname: "",
@@ -27,11 +34,37 @@ export default function SignUpForm() {
     // obtain the input name and update the value based on it
     const handleChange = (event) => {
         const inputName = event.target.name;
+
         setformInputs({
             ...formInputs,
             [inputName]: event.target.value,
         });
     };
+
+    // useEffect(() => {
+    //     setWidget(
+    //         window.cloudinary.createUploadWidget(
+    //             {
+    //                 cloud_name: "dwndlszzc",
+    //                 upload_preset: "s2g31ynm",
+    //                 sources: ["url", "local"],
+    //                 multiple: false,
+    //             },
+
+    //             function (err, info) {
+    //                 if (!err) {
+    //                     console.log(
+    //                         "Upload Widget event - ",
+    //                         info.info.secure_url
+    //                     );
+    //                     setError(error);
+    //                     setResult(info);
+    //                     setProfileUrl(info.info.secure_url);
+    //                 }
+    //             }
+    //         )
+    //     );
+    // }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -52,13 +85,14 @@ export default function SignUpForm() {
             console.log("Error in inserting a new user", error);
         }
     };
+
     return (
         <div>
             <ProfileRedirect />
             <h1>This is the signup content screen</h1>
-
-            <form className="susc-form" method="POST">
+            <form className="su-form" method="POST">
                 <h3>Sign Up Here!</h3>
+
                 <label htmlFor="firstname">
                     Firstname:
                     <input
@@ -128,7 +162,11 @@ export default function SignUpForm() {
                         value={formInputs.inputPasswordConfirm}
                     />
                 </label>
-                <button onClick={handleSubmit}>Submit</button>
+                <div>
+                    <button className="submit" onClick={handleSubmit}>
+                        Submit
+                    </button>
+                </div>
             </form>
         </div>
     );
