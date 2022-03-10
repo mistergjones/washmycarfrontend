@@ -1,11 +1,13 @@
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { useState } from "react";
 import routes from "./Routes/routes";
 import HomeScreen from "./Screens/HeaderScreens/HomeScreen";
 import LoginScreen from "./Screens/HeaderScreens/LoginScreen";
 import SignUpScreen from "./Screens/HeaderScreens/SignUpScreen";
-import ProfileScreen from "./Screens/ProfileScreen/ProfileScreenContent";
-import DashboardScreenOwner from "./Screens/DashboardScreens/DashboardScreenOwnerContent";
+import ProfileScreen from "./Screens/ProfileScreen/ProfileScreen";
+import DashboardScreenOwner from "./Screens/DashboardScreens/DashboardScreenOwner";
+import DashboardScreenWasher from "./Screens/DashboardScreens/DashboardScreenWasher";
 import {
     Route,
     Routes,
@@ -24,6 +26,10 @@ function App() {
             >
                 <Router>
                     <Routes>
+                        <Route
+                            path={routes.DASHBOARD_OWNER}
+                            element={<DashboardScreenOwner />}
+                        />
                         <Route path={routes.HOME} element={<HomeScreen />} />
                         <Route path={routes.LOGIN} element={<LoginScreen />} />
                         <Route
@@ -38,13 +44,9 @@ function App() {
                             path={routes.PROFILE_OWNER}
                             element={<ProfileScreen />}
                         />
-                        {/* <Route
-                            path={routes.DASHBOARD_WASHER}
-                            element={<DashboardScreen />}
-                        /> */}
                         <Route
-                            path={routes.DASHBOARD_OWNER}
-                            element={<DashboardScreenOwner />}
+                            path={routes.DASHBOARD_WASHER}
+                            element={<DashboardScreenWasher />}
                         />
                     </Routes>
                 </Router>

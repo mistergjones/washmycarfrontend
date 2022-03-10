@@ -1,14 +1,13 @@
 import React from "react";
-import "./ProfileScreen.css";
 import MasterScreen from "../Master/MasterScreen";
 import ProfileScreenContent from "./ProfileScreenContent";
 
 export default function ProfileScreen() {
     return (
-        <div>
+        <div className="glen">
             <MasterScreen
                 ScreenComponent={ProfileScreenContent}
-                heading="Both PRifile Screen Input"
+                heading="WHERE IS THE HEADING"
             />
         </div>
     );

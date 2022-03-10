@@ -6,7 +6,7 @@ import "./EditProfile.css";
 export default function EditProfile({ owner }) {
     return (
         <div className="edit-profile-container">
-            <table className="tbl tbl--block">
+            <table className="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Firstname</th>
@@ -17,12 +17,12 @@ export default function EditProfile({ owner }) {
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="table-striped">
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>Glen</td>
+                        <td>Jones</td>
+                        <td>23 Smith Street</td>
+                        <td>Melbourne</td>
                         <td></td>
                         <td>
                             <NavLink to={routes.EDIT_PROFILE_OWNER}>

@@ -39,13 +39,94 @@ export default function OpenAssignedJobs({ data2, handleCancel }) {
             lastname: "Jones",
             booking_id: "4",
         },
+        {
+            date: "01/04/22",
+            start_time: "10 am",
+            service_type: "Car",
+
+            firstname: "Glen",
+            lastname: "Jones",
+            booking_id: "4",
+        },
+        {
+            date: "01/04/22",
+            start_time: "10 am",
+            service_type: "Car",
+
+            firstname: "Glen",
+            lastname: "Jones",
+            booking_id: "4",
+        },
+        {
+            date: "01/04/22",
+            start_time: "10 am",
+            service_type: "Car",
+
+            firstname: "Glen",
+            lastname: "Jones",
+            booking_id: "4",
+        },
+        {
+            date: "01/04/22",
+            start_time: "10 am",
+            service_type: "Car",
+
+            firstname: "Glen",
+            lastname: "Jones",
+            booking_id: "4",
+        },
+        {
+            date: "01/04/22",
+            start_time: "10 am",
+            service_type: "Car",
+
+            firstname: "Glen",
+            lastname: "Jones",
+            booking_id: "4",
+        },
+        {
+            date: "01/04/22",
+            start_time: "10 am",
+            service_type: "Car",
+
+            firstname: "Glen",
+            lastname: "Jones",
+            booking_id: "4",
+        },
+        {
+            date: "01/04/22",
+            start_time: "10 am",
+            service_type: "Car",
+
+            firstname: "Glen",
+            lastname: "Jones",
+            booking_id: "4",
+        },
+        {
+            date: "01/04/22",
+            start_time: "10 am",
+            service_type: "Car",
+
+            firstname: "Glen",
+            lastname: "Jones",
+            booking_id: "4",
+        },
+        {
+            date: "01/04/22",
+            start_time: "10 am",
+            service_type: "Car",
+
+            firstname: "Glen",
+            lastname: "Jones",
+            booking_id: "4",
+        },
     ];
 
     return (
         <div className="open-assigned-jobs-container">
             <h3>Open and ASsigned Jobs</h3>
 
-            <table className="">
+            <table className="table table-striped table-hover fixed_header">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -71,6 +152,7 @@ export default function OpenAssignedJobs({ data2, handleCancel }) {
                             <td></td>
                             <td>
                                 <button
+                                    className="btn btn-primary"
                                     // onClick={handleCancel}
                                     value={historialRowItem.booking_id}
                                 >

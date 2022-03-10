@@ -150,38 +150,59 @@ export default function ProfileForm() {
             <div>
                 <h1>This is the BOTH PROFILE content screen</h1>
 
-                <form className="profile-form" method="POST">
+                <form method="POST">
                     <h3>Your Profile info here</h3>
 
-                    <label htmlFor="firstname">
-                        Firstname:
-                        <input
-                            style={{ backgroundColor: "#f7f7f5" }}
-                            readOnly
-                            type="text"
-                            name="inputFirstname"
-                            placeholder="Firstname"
-                            onChange={handleChange}
-                            value={formInputs.inputFirstname}
-                        />
-                    </label>
-                    <label htmlFor="lastname">
-                        Lastname:
-                        <input
-                            style={{ backgroundColor: "#f7f7f5" }}
-                            readOnly
-                            type="text"
-                            name="inputLastname"
-                            placeholder="Lastname"
-                            onChange={handleChange}
-                            value={formInputs.inputLastname}
-                        />
-                    </label>
-
-                    <div id="searchBoxContainer">
-                        <label htmlFor="streetAddresss">
-                            Street Address:
+                    <div className="row">
+                        <div className="col">
+                            <label htmlFor="firstname">Firstname:</label>
                             <input
+                                className="form-control"
+                                style={{ backgroundColor: "#f7f7f5" }}
+                                readOnly
+                                type="text"
+                                name="inputFirstname"
+                                placeholder="Firstname"
+                                onChange={handleChange}
+                                value={formInputs.inputFirstname}
+                            />
+                        </div>
+                        <div className="col">
+                            <label htmlFor="lastname">Lastname:</label>
+                            <input
+                                className="form-control"
+                                style={{ backgroundColor: "#f7f7f5" }}
+                                readOnly
+                                type="text"
+                                name="inputLastname"
+                                placeholder="Lastname"
+                                onChange={handleChange}
+                                value={formInputs.inputLastname}
+                            />
+                        </div>
+
+                        <div className="col">
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                className="form-control"
+                                style={{ backgroundColor: "#f7f7f5" }}
+                                readOnly
+                                type="email"
+                                name="inputEmail"
+                                placeholder="Your Email"
+                                onChange={handleChange}
+                                value={formInputs.inputEmail}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div id="searchBoxContainer">
+                            <label htmlFor="streetAddresss">
+                                Street Address:
+                            </label>
+                            <input
+                                className="form-control"
                                 id="searchBox"
                                 type="text"
                                 name="inputStreetAddress"
@@ -189,144 +210,165 @@ export default function ProfileForm() {
                                 onChange={handleChange}
                                 value={formInputs.inputStreetAddress}
                             />
-                        </label>
+                        </div>
                     </div>
 
-                    <label htmlFor="streetSuburb">
-                        Suburb:
-                        <input
-                            style={{ backgroundColor: "#f7f7f5" }}
-                            readOnly
-                            type="text"
-                            name="inputSuburb"
-                            placeholder="Suburb"
-                            onChange={handleChange}
-                            value={formInputs.inputSuburb}
-                        />
-                    </label>
-                    <label htmlFor="state">
-                        State:
-                        <input
-                            style={{ backgroundColor: "#f7f7f5" }}
-                            readOnly
-                            type="text"
-                            name="inputState"
-                            placeholder="State"
-                            onChange={handleChange}
-                            value={formInputs.inputState}
-                        />
-                    </label>
-                    <label htmlFor="postcode">
-                        Postcode:
-                        <input
-                            style={{ backgroundColor: "#f7f7f5" }}
-                            readOnly
-                            type="text"
-                            name="inputPostcode"
-                            placeholder="Postcode"
-                            onChange={handleChange}
-                            value={formInputs.inputPostcode}
-                        />
-                    </label>
-
-                    <label htmlFor="mobile">
-                        Mobile:
-                        <input
-                            type="number"
-                            name="inputMobile"
-                            placeholder="Your Mobile"
-                            onChange={handleChange}
-                            value={formInputs.inputMobile}
-                        />
-                    </label>
-
-                    <label htmlFor="email">
-                        Email:
-                        <input
-                            style={{ backgroundColor: "#f7f7f5" }}
-                            readOnly
-                            type="email"
-                            name="inputEmail"
-                            placeholder="Your Email"
-                            onChange={handleChange}
-                            value={formInputs.inputEmail}
-                        />
-                    </label>
-
-                    {user.type === "O" ? (
-                        <label htmlFor="inputCarPhoto">
-                            Car To Be Washed:
+                    <div className="row">
+                        <div className="col">
+                            <label htmlFor="streetSuburb">Suburb:</label>
                             <input
-                                name="inputCarPhoto"
-                                type="file"
-                                onChange={(e) => setImage(e.target.files[0])}
-                            ></input>
-                            {image && (
-                                <button type="button" onClick={uploadImage}>
-                                    Upload
-                                </button>
-                            )}
-                        </label>
-                    ) : (
-                        <label htmlFor="inputProfilePhoto">
-                            Your Profile Photo:
+                                className="form-control"
+                                style={{ backgroundColor: "#f7f7f5" }}
+                                readOnly
+                                type="text"
+                                name="inputSuburb"
+                                placeholder="Suburb"
+                                onChange={handleChange}
+                                value={formInputs.inputSuburb}
+                            />
+                        </div>
+
+                        <div className="col">
+                            <label htmlFor="state">State:</label>
                             <input
-                                name="inputProfilePhoto"
-                                type="file"
-                                onChange={(e) => setImage(e.target.files[0])}
-                            ></input>
-                            {image && (
-                                <button type="button" onClick={uploadImage}>
-                                    Upload
-                                </button>
+                                className="form-control"
+                                style={{ backgroundColor: "#f7f7f5" }}
+                                readOnly
+                                type="text"
+                                name="inputState"
+                                placeholder="State"
+                                onChange={handleChange}
+                                value={formInputs.inputState}
+                            />
+                        </div>
+
+                        <div className="col">
+                            <label htmlFor="postcode">Postcode:</label>
+                            <input
+                                className="form-control"
+                                style={{ backgroundColor: "#f7f7f5" }}
+                                readOnly
+                                type="text"
+                                name="inputPostcode"
+                                placeholder="Postcode"
+                                onChange={handleChange}
+                                value={formInputs.inputPostcode}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col">
+                            <label htmlFor="mobile">Mobile:</label>
+                            <input
+                                className="form-control"
+                                type="number"
+                                name="inputMobile"
+                                placeholder="Your Mobile"
+                                onChange={handleChange}
+                                value={formInputs.inputMobile}
+                            />
+                        </div>
+                        <div className="col">
+                            {user.type === "O" ? (
+                                <label htmlFor="inputCarPhoto">
+                                    Car To Be Washed:
+                                    <input
+                                        className="form-control"
+                                        name="inputCarPhoto"
+                                        type="file"
+                                        onChange={(e) =>
+                                            setImage(e.target.files[0])
+                                        }
+                                    ></input>
+                                    {image && (
+                                        <button
+                                            className="btn btn-primary"
+                                            type="button"
+                                            onClick={uploadImage}
+                                        >
+                                            Upload
+                                        </button>
+                                    )}
+                                </label>
+                            ) : (
+                                <label htmlFor="inputProfilePhoto">
+                                    Your Profile Photo:
+                                    <input
+                                        className="form-control"
+                                        name="inputProfilePhoto"
+                                        type="file"
+                                        onChange={(e) =>
+                                            setImage(e.target.files[0])
+                                        }
+                                    ></input>
+                                    {image && (
+                                        <button
+                                            className="btn btn-primary"
+                                            type="button"
+                                            onClick={uploadImage}
+                                        >
+                                            Upload
+                                        </button>
+                                    )}
+                                </label>
                             )}
-                        </label>
-                    )}
+                        </div>
+                    </div>
 
                     {user.type === "W" && (
                         <div>
-                            <label htmlFor="dob">
-                                DOB:
-                                <input
-                                    type="data"
-                                    name="inputDOB"
-                                    placeholder="Your DOB"
-                                    onChange={handleChange}
-                                    value={formInputs.inputDOB}
-                                />
-                            </label>
-                            <label htmlFor="bankName">
-                                Bank Name:
-                                <input
-                                    type="text"
-                                    name="inputBankName"
-                                    placeholder="Your Bank Name"
-                                    onChange={handleChange}
-                                    value={formInputs.inputBankName}
-                                />
-                            </label>
-                            <label htmlFor="bsb">
-                                BSB:
-                                <input
-                                    maxLength="6"
-                                    type="number"
-                                    name="inputBSB"
-                                    placeholder="Your Bank BSB"
-                                    onChange={handleChange}
-                                    value={formInputs.inputBSB}
-                                />
-                            </label>
-                            <label htmlFor="accountNumber">
-                                Account Number:
-                                <input
-                                    maxLength="10"
-                                    type="number"
-                                    name="inputAccountNumber"
-                                    placeholder="Your Account Number"
-                                    onChange={handleChange}
-                                    value={formInputs.inputAccountNumber}
-                                />
-                            </label>
+                            <div className="row">
+                                <div className="col">
+                                    <label htmlFor="bankName">Bank Name:</label>
+                                    <input
+                                        className="form-control"
+                                        type="text"
+                                        name="inputBankName"
+                                        placeholder="Your Bank Name"
+                                        onChange={handleChange}
+                                        value={formInputs.inputBankName}
+                                    />
+                                </div>
+                                <div className="col">
+                                    <label htmlFor="bsb">BSB:</label>
+                                    <input
+                                        className="form-control"
+                                        maxLength="6"
+                                        type="number"
+                                        name="inputBSB"
+                                        placeholder="Your Bank BSB"
+                                        onChange={handleChange}
+                                        value={formInputs.inputBSB}
+                                    />
+                                </div>
+                                <div className="col">
+                                    <label htmlFor="accountNumber">
+                                        Account Number:
+                                    </label>
+                                    <input
+                                        className="form-control"
+                                        maxLength="10"
+                                        type="number"
+                                        name="inputAccountNumber"
+                                        placeholder="Your Account Number"
+                                        onChange={handleChange}
+                                        value={formInputs.inputAccountNumber}
+                                    />
+                                </div>
+                                <div className="col">
+                                    <label htmlFor="dob">DOB:</label>
+                                    <input
+                                        className="form-control"
+                                        type="data"
+                                        name="inputDOB"
+                                        placeholder="Your DOB"
+                                        onChange={handleChange}
+                                        value={formInputs.inputDOB}
+                                    />
+                                </div>
+                            </div>
+
                             <label htmlFor="acceptTerms">
                                 Accept Terms:
                                 <input
@@ -340,7 +382,10 @@ export default function ProfileForm() {
                         </div>
                     )}
                     <div>
-                        <button className="submit" onClick={handleSubmit}>
+                        <button
+                            className="submit btn btn-primary"
+                            onClick={handleSubmit}
+                        >
                             Submit
                         </button>
                     </div>

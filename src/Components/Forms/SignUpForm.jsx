@@ -90,40 +90,45 @@ export default function SignUpForm() {
         <div>
             <ProfileRedirect />
             <h1>This is the signup content screen</h1>
+
             <form className="su-form" method="POST">
                 <h3>Sign Up Here!</h3>
-
-                <label htmlFor="firstname">
-                    Firstname:
+                <div className="mb-1 row p-0 m-0">
+                    <label className="form-label" htmlFor="firstname">
+                        Firstname:
+                    </label>
                     <input
+                        className="form-control col"
                         type="text"
                         name="inputFirstname"
                         placeholder="Firstname"
                         onChange={handleChange}
                         value={formInputs.inputFirstname}
                     />
-                </label>
-                <label htmlFor="">
-                    Lastname:
+                </div>
+                <div className="mb-1 row p-0 m-0">
+                    <label htmlFor="">Lastname:</label>
                     <input
+                        className="form-control col"
                         type="text"
                         name="inputLastname"
                         placeholder="Lastname"
                         onChange={handleChange}
                         value={formInputs.inputLastname}
                     />
-                </label>
-                <label htmlFor="email">
-                    Email:
+                </div>
+                <div className="mb-1 row p-0 m-0">
+                    <label htmlFor="email">Email:</label>
                     <input
+                        className="form-control col"
                         type="email"
                         name="inputEmail"
                         placeholder="Your Email"
                         onChange={handleChange}
                         value={formInputs.inputEmail}
                     />
-                </label>
-                <div>
+                </div>
+                <div className="mb-1 p-0 m-0">
                     <input
                         type="radio"
                         id="owner"
@@ -142,28 +147,30 @@ export default function SignUpForm() {
                       <label htmlFor="washer">Washer</label>
                 </div>
 
-                <label htmlFor="password">
-                    Password:
+                <div className="mb-1 row p-0 m-0">
+                    <label htmlFor="password">Password:</label>
                     <input
+                        className="form-control col"
                         type="password"
                         name="inputPassword"
                         placeholder="Your Password"
                         onChange={handleChange}
                         value={formInputs.InputPassword}
                     />
-                </label>
-                <label htmlFor="">
-                    Confirm Password:
+                </div>
+                <div className="mb-1 row p-0 m-0">
+                    <label htmlFor="">Confirm Password:</label>
                     <input
+                        className="form-control col"
                         type="password"
                         name="inputPasswordConfirm"
                         placeholder="Confirm Password"
                         onChange={handleChange}
                         value={formInputs.inputPasswordConfirm}
                     />
-                </label>
+                </div>
                 <div>
-                    <button className="submit" onClick={handleSubmit}>
+                    <button className="btn btn-primary" onClick={handleSubmit}>
                         Submit
                     </button>
                 </div>

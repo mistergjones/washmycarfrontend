@@ -1,6 +1,7 @@
 .su-form {
-    display: grid;
-    width: 80%;
+    /* display: grid; */
+    margin: 0 auto;
+
     position: fixed;
     top: 50%;
     left: 50%;
@@ -9,7 +10,7 @@
     border: 3px solid black;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="email"],
 input[type="password"],
 select {
@@ -36,4 +37,4 @@ select {
 
 input[type="submit"]:hover {
     background-color: #45a049;
-}
+} */
