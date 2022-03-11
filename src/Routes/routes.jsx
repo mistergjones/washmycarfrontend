@@ -21,7 +21,7 @@ export default {
     NEW_LISTINGS: "/newlistings",
     HOME: "/",
     NOT_FOUND: "/notfound",
-    CREATE_LISTING_OWNER: "/listings/create",
+    CREATE_BOOKINGS_OWNER: "/bookings/create",
     CALENDAR: "/calendar",
     SOCIAL: "/social",
     SUCCESSFUL_PAYMENT: "/successful_payment",

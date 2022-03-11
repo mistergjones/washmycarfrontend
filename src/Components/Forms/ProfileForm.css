@@ -1,17 +1,21 @@
-.profile-form {
-    /* display: grid;
+.profile-form-container {
     width: 80%;
     position: fixed;
     top: 50%;
-    left: 50%; */
+    left: 50%;
     /* bring your own prefixes */
-    /* transform: translate(-50%, -50%);
-    border: 3px solid black; */
+    transform: translate(-50%, -50%);
+    border: 3px solid black;
+    padding: 3rem;
+}
+
+.glen {
+    display: inline;
 }
 
 #searchBox {
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
     /* padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;

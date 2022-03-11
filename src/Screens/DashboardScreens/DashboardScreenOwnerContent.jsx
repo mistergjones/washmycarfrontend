@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import "./DashboardScreenOwnerContent.css";
 
 import AuthContext from "../../context/authContext";
-import EditProfile from "../../Components/Dashboard/Profile/EditProfile";
-import PastJobs from "../../Components/Dashboard/PastJobs/PastJobs";
-import OpenAssignedJobs from "../../Components/Dashboard/OpenAndAssignedJobs/OpenAssignedJobs";
+import EditProfile from "../../Components/Dashboard/Owner/Profile/EditProfile";
+import PastJobs from "../../Components/Dashboard/Owner/PastJobs/PastJobs";
+import OpenAssignedJobs from "../../Components/Dashboard/Owner/OpenAndAssignedJobs/OpenAssignedJobs";
 
 export default function DashboardScreenOwnerContent() {
     const { user, setUser } = useContext(AuthContext);

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import routes from "../../../Routes/routes";
+import routes from "../../../../Routes/routes";
 import "./EditProfile.css";
 
 export default function EditProfile({ owner }) {

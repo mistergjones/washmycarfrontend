@@ -8,6 +8,10 @@ import SignUpScreen from "./Screens/HeaderScreens/SignUpScreen";
 import ProfileScreen from "./Screens/ProfileScreen/ProfileScreen";
 import DashboardScreenOwner from "./Screens/DashboardScreens/DashboardScreenOwner";
 import DashboardScreenWasher from "./Screens/DashboardScreens/DashboardScreenWasher";
+import OwnerBookingScreen from "./Screens/OwnerScreens/OwnerBookingScreen";
+
+import ProtectedRoute from "./Components/protectedRoute";
+
 import {
     Route,
     Routes,
@@ -26,6 +30,10 @@ function App() {
             >
                 <Router>
                     <Routes>
+                        <Route
+                            path={routes.CREATE_BOOKINGS_OWNER}
+                            element={<OwnerBookingScreen />}
+                        />
                         <Route
                             path={routes.DASHBOARD_OWNER}
                             element={<DashboardScreenOwner />}

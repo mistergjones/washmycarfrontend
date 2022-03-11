@@ -150,7 +150,7 @@ export default function ProfileForm() {
             <div>
                 <h1>This is the BOTH PROFILE content screen</h1>
 
-                <form method="POST">
+                <form className="profile-form-container" method="POST">
                     <h3>Your Profile info here</h3>
 
                     <div className="row">
@@ -194,24 +194,26 @@ export default function ProfileForm() {
                                 value={formInputs.inputEmail}
                             />
                         </div>
-                    </div>
 
-                    <div className="row">
-                        <div id="searchBoxContainer">
-                            <label htmlFor="streetAddresss">
-                                Street Address:
-                            </label>
-                            <input
-                                className="form-control"
-                                id="searchBox"
-                                type="text"
-                                name="inputStreetAddress"
-                                placeholder="Street Address"
-                                onChange={handleChange}
-                                value={formInputs.inputStreetAddress}
-                            />
+                        <div className="row">
+                            <div id="searchBoxContainer">
+                                <label htmlFor="streetAddresss">
+                                    Street Address:
+                                </label>
+                                <input
+                                    className="form-control"
+                                    id="searchBox"
+                                    type="text"
+                                    name="inputStreetAddress"
+                                    placeholder="Street Address"
+                                    onChange={handleChange}
+                                    value={formInputs.inputStreetAddress}
+                                />
+                            </div>
                         </div>
                     </div>
+
+                    <div className="row"></div>
 
                     <div className="row">
                         <div className="col">
@@ -269,6 +271,7 @@ export default function ProfileForm() {
                                 value={formInputs.inputMobile}
                             />
                         </div>
+
                         <div className="col">
                             {user.type === "O" ? (
                                 <label htmlFor="inputCarPhoto">
@@ -383,7 +386,7 @@ export default function ProfileForm() {
                     )}
                     <div>
                         <button
-                            className="submit btn btn-primary"
+                            className="submit btn btn-primary mt-3"
                             onClick={handleSubmit}
                         >
                             Submit

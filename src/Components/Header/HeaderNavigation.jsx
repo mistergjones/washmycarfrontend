@@ -7,7 +7,8 @@ import "./HeaderNavigation.css";
 
 export default function HeaderNavigation() {
     // GJ: the below is not working
-    // const { user, setUser } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
+    const type = !user ? null : user.type;
 
     return (
         <div className="navigation">
@@ -15,12 +16,40 @@ export default function HeaderNavigation() {
                 <li>
                     <NavLink to={routes.HOME}>Home</NavLink>
                 </li>
-                <li>
-                    <NavLink to={routes.LOGIN}>Login</NavLink>
-                </li>
-                <li>
-                    <NavLink to={routes.SIGNUP}>Sign Up</NavLink>
-                </li>
+
+                {type === "O" && user.is_profile_established && (
+                    <li>
+                        <NavLink to={routes.DASHBOARD_OWNER}>Dashboard</NavLink>
+                    </li>
+                )}
+                {type === "O" && user.is_profile_established && (
+                    <li>
+                        <NavLink to={routes.CREATE_BOOKINGS_OWNER}>
+                            Create Booking
+                        </NavLink>
+                    </li>
+                )}
+
+                {type === "W" && user.hasProfile && (
+                    <li>
+                        <NavLink to={routes.DASHBOARD_WASHER}>
+                            Dashboard
+                        </NavLink>
+                    </li>
+                )}
+
+                {!user && (
+                    <li>
+                        <NavLink to={routes.SIGNUP}>SignUp</NavLink>
+                    </li>
+                )}
+                {!user ? (
+                    <li>
+                        <NavLink to={routes.LOGIN}> Login</NavLink>
+                    </li>
+                ) : (
+                    <li>{user.email}</li>
+                )}
             </ul>
         </div>
     );
