@@ -30,7 +30,7 @@ export default function HeaderNavigation() {
                     </li>
                 )}
 
-                {type === "W" && user.hasProfile && (
+                {type === "W" && user.is_profile_established && (
                     <li>
                         <NavLink to={routes.DASHBOARD_WASHER}>
                             Dashboard
@@ -49,6 +49,19 @@ export default function HeaderNavigation() {
                     </li>
                 ) : (
                     <li>{user.email}</li>
+                )}
+                {user && (
+                    <li>
+                        <NavLink
+                            to={routes.HOME}
+                            onClick={() => {
+                                storageService.removeToken();
+                                setUser(null);
+                            }}
+                        >
+                            Logout
+                        </NavLink>
+                    </li>
                 )}
             </ul>
         </div>

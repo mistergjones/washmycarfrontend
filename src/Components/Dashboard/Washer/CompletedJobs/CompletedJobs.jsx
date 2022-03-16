@@ -1,63 +1,21 @@
 import React from "react";
 import "./CompletedJobs.css";
 
-export default function CompletedJobs() {
-    const data = [
-        {
-            date: "01/01/22",
-            start_time: "10 am",
-            service_type: "Car",
-            fee: "10.00",
-            viewResult: "http://www.news.com.au",
-        },
-        {
-            date: "01/01/22",
-            start_time: "10 am",
-            service_type: "Car",
-            fee: "10.00",
-            viewResult: "http://www.news.com.au",
-        },
-        {
-            date: "01/01/22",
-            start_time: "10 am",
-            service_type: "Car",
-            fee: "10.00",
-            viewResult: "http://www.news.com.au",
-        },
-        {
-            date: "01/01/22",
-            start_time: "10 am",
-            service_type: "Car",
-            fee: "10.00",
-            viewResult: "http://www.news.com.au",
-        },
-        {
-            date: "01/01/22",
-            start_time: "10 am",
-            service_type: "Car",
-            fee: "10.00",
-            viewResult: "http://www.news.com.au",
-        },
-        {
-            date: "01/01/22",
-            start_time: "10 am",
-            service_type: "Car",
-            fee: "10.00",
-            viewResult: "http://www.news.com.au",
-        },
-    ];
+export default function CompletedJobs(props) {
+    const data = props.data;
+
     return (
         <div className="completed-jobs-container">
-            <h3>WASHER COMPLETED JOBS</h3>
+            <h3>WASHER FINISHED JOBS</h3>
 
             <table className="table table-striped table-hover fixed_header">
                 <thead>
                     <tr>
                         <th>Date</th>
                         <th>Start Time</th>
-                        <th>Service</th>
+                        <th>Washed</th>
                         <th>Fee</th>
-                        <th></th>
+                        <th>Suburb</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -66,15 +24,17 @@ export default function CompletedJobs() {
                         <tr key={index}>
                             <td>{historialRowItem.date}</td>
                             <td>{historialRowItem.start_time}</td>
-                            <td>{historialRowItem.service_type}</td>
+                            <td>{historialRowItem.vehicle_type}</td>
 
-                            <td>{historialRowItem.fee}</td>
-                            <td></td>
+                            <td>{historialRowItem.service_fee}</td>
+                            <td>{historialRowItem.suburb}</td>
                             <td>
                                 <button
                                     className="btn btn-primary"
                                     // onClick={handleCancel}
-                                    value={historialRowItem.viewResult}
+                                    value={
+                                        historialRowItem.washerCompletedProof
+                                    }
                                 >
                                     View
                                 </button>

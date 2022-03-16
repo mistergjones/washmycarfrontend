@@ -1,4 +1,5 @@
 export default {
+    WASHER_COMPLETED: "/bookings/completed",
     PAYMENTS: "/owners/makestripepayment",
     ASSIGNED_WASHER: "/washers/assignedwalks/:credential_id",
     HISTORY: "/history",
