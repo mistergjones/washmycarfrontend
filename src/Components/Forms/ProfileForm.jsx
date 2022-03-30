@@ -148,7 +148,9 @@ export default function ProfileForm() {
         <>
             {isSubmittedTrue && <ProfileRedirect />}
             <div>
-                <h1>This is the BOTH PROFILE content screen</h1>
+                <h1>
+                    This is the BOTH (OWNER AND WASHER) PROFILE content screen
+                </h1>
 
                 <form className="profile-form-container" method="POST">
                     <h3>Your Profile info here</h3>

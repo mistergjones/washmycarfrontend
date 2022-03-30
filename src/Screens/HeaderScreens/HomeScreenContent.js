@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import routes from "../../Routes/routes";
 import "./HomeScreenContent.css";
 
 import lottie from "lottie-web";
@@ -23,8 +25,19 @@ export default function HomeScreenContent() {
                         <div id="washCarLottie"></div>
                     </div>
                     <div className="hsc-form-buttons">
-                        <button>Sign Up</button>
-                        <button>Log In</button>
+                        <NavLink
+                            className="hsc-navlink-formatting"
+                            to={routes.SIGNUP}
+                        >
+                            Sign Up
+                        </NavLink>
+
+                        <NavLink
+                            className="hsc-navlink-formatting"
+                            to={routes.LOGIN}
+                        >
+                            Login
+                        </NavLink>
                     </div>
                 </div>
             </div>

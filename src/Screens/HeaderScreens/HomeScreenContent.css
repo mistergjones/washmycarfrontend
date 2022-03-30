@@ -32,3 +32,14 @@
     margin: 0 auto;
     width: 500px;
 }
+
+.hsc-navlink-formatting {
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 1rem;
+}
+
+.hsc-navlink-formatting:hover {
+    background-color: lightblue;
+}

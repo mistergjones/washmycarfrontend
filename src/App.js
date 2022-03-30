@@ -9,6 +9,7 @@ import ProfileScreen from "./Screens/ProfileScreen/ProfileScreen";
 import DashboardScreenOwner from "./Screens/DashboardScreens/DashboardScreenOwner";
 import DashboardScreenWasher from "./Screens/DashboardScreens/DashboardScreenWasher";
 import OwnerBookingScreen from "./Screens/OwnerScreens/OwnerBookingScreen";
+import OwnerProfileEditScreen from "./Screens/OwnerScreens/OwnerProfileEditScreen";
 
 import ProtectedRoute from "./Components/protectedRoute";
 
@@ -55,6 +56,11 @@ function App() {
                         <Route
                             path={routes.DASHBOARD_WASHER}
                             element={<DashboardScreenWasher />}
+                        />
+                        />
+                        <Route
+                            path={routes.EDIT_PROFILE_OWNER}
+                            element={<OwnerProfileEditScreen />}
                         />
                     </Routes>
                 </Router>
