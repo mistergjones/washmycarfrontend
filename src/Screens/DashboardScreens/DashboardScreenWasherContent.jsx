@@ -6,6 +6,7 @@ import "./DashboardScreenWasherContent.css";
 import AuthContext from "../../context/authContext";
 import CompletedJobs from "../../Components/Dashboard/Washer/CompletedJobs/CompletedJobs";
 import OpenAndAssignedJobs from "../../Components/Dashboard/Washer/OpenAndAssignedJobs/OpenAndAssignedJobs";
+import EditProfile from "../../Components/Dashboard/Washer/Profile/EditProfile";
 
 export default function DashboardScreenWasherContent() {
     const { user, setUser } = useContext(AuthContext);
@@ -48,6 +49,7 @@ export default function DashboardScreenWasherContent() {
 
             <h3>The user tyoe is:{user.type}</h3>
 
+            <EditProfile />
             {isDataLoaded && <CompletedJobs data={completedBookings} />}
             {isDataLoaded && <OpenAndAssignedJobs data={assignedBookings} />}
         </div>

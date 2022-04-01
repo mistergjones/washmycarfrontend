@@ -10,6 +10,8 @@ import DashboardScreenOwner from "./Screens/DashboardScreens/DashboardScreenOwne
 import DashboardScreenWasher from "./Screens/DashboardScreens/DashboardScreenWasher";
 import OwnerBookingScreen from "./Screens/OwnerScreens/OwnerBookingScreen";
 import OwnerProfileEditScreen from "./Screens/OwnerScreens/OwnerProfileEditScreen";
+import WasherProfileEditScreen from "./Screens/WasherScreens/WasherProfileEditScreen";
+import WasherViewOpenJobsScreen from "./Screens/WasherScreens/WasherViewOpenJobsScreen";
 
 import ProtectedRoute from "./Components/protectedRoute";
 
@@ -61,6 +63,14 @@ function App() {
                         <Route
                             path={routes.EDIT_PROFILE_OWNER}
                             element={<OwnerProfileEditScreen />}
+                        />
+                        <Route
+                            path={routes.EDIT_PROFILE_WASHER}
+                            element={<WasherProfileEditScreen />}
+                        />
+                        <Route
+                            path={routes.NEW_LISTINGS}
+                            element={<WasherViewOpenJobsScreen />}
                         />
                     </Routes>
                 </Router>

@@ -38,6 +38,14 @@ export default function HeaderNavigation() {
                     </li>
                 )}
 
+                {type === "W" && user.is_profile_established && (
+                    <li>
+                        <NavLink to={routes.NEW_LISTINGS}>
+                            View Open Listings
+                        </NavLink>
+                    </li>
+                )}
+
                 {!user && (
                     <li>
                         <NavLink to={routes.SIGNUP}>SignUp</NavLink>

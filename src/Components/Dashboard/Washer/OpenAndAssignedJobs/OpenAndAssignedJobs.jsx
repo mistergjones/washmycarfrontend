@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+
+import ViewJobModal from "../../../Modals/ViewJobModal";
 
 export default function OpenAndAssignedJobs(props) {
     let data = props.data;
+
+    const [showModal, setShowModal] = useState(false);
+    const [booking_id, setBooking_id] = useState("");
+
+    const showJobModal = (e) => {
+        setBooking_id(e.target.value);
+        console.log("Showthe modal", e.target.value);
+        setShowModal(true);
+    };
+
+    // if washer accepts, update the booking
+    const onAccept = () => {
+        console.log("ACCEPTED");
+        setShowModal(false);
+    };
 
     return (
         <div>
@@ -35,6 +52,7 @@ export default function OpenAndAssignedJobs(props) {
                                         className="btn btn-primary"
                                         // onClick={handleCancel}
                                         value={historialRowItem.booking_id}
+                                        onClick={showJobModal}
                                     >
                                         View
                                     </button>
@@ -43,6 +61,14 @@ export default function OpenAndAssignedJobs(props) {
                         ))}
                     </tbody>
                 </table>
+                {showModal && (
+                    <ViewJobModal
+                        show={showModal}
+                        data={booking_id}
+                        onClose={() => setShowModal(false)}
+                        onAccept={onAccept}
+                    />
+                )}
             </div>
         </div>
     );

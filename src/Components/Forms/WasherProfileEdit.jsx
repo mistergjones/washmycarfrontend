@@ -3,25 +3,24 @@ import { NavLink } from "react-router-dom";
 import routes from "../../Routes/routes";
 
 import useApi from "../../hooks/useApi";
-import ownersApi from "../../api/owners";
+import washersApi from "../../api/washers";
 import AuthContext from "../../context/authContext";
 import jwtService from "../../storage/jwt";
 import ProfileRedirect from "../../ProfileRedirect/ProfileRedirect";
 import SuccessModal from "../Modals/SuccessModal";
 
-// 1.o need to retrieve the current record set for the owner and display it
+// 1.o need to retrieve the current record set for the Washer and display it
 // 2.0 need to have the form be able to update via text fields
 // 3.0 Query needs to be written to UPDATE hte record based on the ID
 // 4.0 A toast / modal is raised of successful update
 // 5.0 All done.
 
-export default function OwnerProfileEdit() {
+export default function WasherProfileEdit() {
     const { user, setUser } = useContext(AuthContext);
     // const [assignedBookings, setAssignedBookings] = useState({});
     // const [completedBookings, setCompletedBookings] = useState({});
     const [isDataLoaded, setIsDataLoaded] = useState(false);
     const [dataReceived, setDataReceived] = useState(null);
-
     const [firstnameChange, setFirstnameChange] = useState(false);
     const [lastnameChange, setLastnameChange] = useState(false);
     const [streetAddressChange, setStreetAddressChange] = useState(false);
@@ -30,10 +29,10 @@ export default function OwnerProfileEdit() {
     const [postcodeChange, setPostcodeChange] = useState(false);
     const [show, setShow] = useState(false);
 
-    // obtain the specific owner data
-    const { request: getSpecificOwner } = useApi(ownersApi.getCurrentOwner);
-    // update the specific owner data
-    const { request: updateOwner } = useApi(ownersApi.updateOwner);
+    // obtain the specific Washer data
+    const { request: getSpecificWasher } = useApi(washersApi.getCurrentWasher);
+    // update the specific Washer data
+    const { request: updateWasher } = useApi(washersApi.updateWasher);
 
     // establish object for all Form Inputs
     const [formInputs, setformInputs] = useState({
@@ -47,13 +46,12 @@ export default function OwnerProfileEdit() {
     });
 
     useEffect(() => {
-        const loadOwnerDetails = async () => {
-            const response = await getSpecificOwner(user);
+        const loadWasherDetails = async () => {
+            const response = await getSpecificWasher(user);
             setDataReceived(response.data[0]);
             setIsDataLoaded(true);
         };
-
-        loadOwnerDetails();
+        loadWasherDetails();
     }, []);
 
     const handleSubmit = async (e) => {
@@ -78,7 +76,7 @@ export default function OwnerProfileEdit() {
         });
 
         try {
-            const result = await updateOwner(formInputs);
+            const result = await updateWasher(formInputs);
             if (result.data.rowCount === 1) {
                 // display the modal
                 setShow(true);
@@ -118,11 +116,11 @@ export default function OwnerProfileEdit() {
     return (
         <div>
             {/* <ProfileRedirect /> */}
-            <h1>This is the owner profile edit form</h1>
+            <h1>This is the Washer profile edit form</h1>
 
             {isDataLoaded && (
                 <form className="su-form" method="POST">
-                    <h3>Edit Owner Profile Details:</h3>
+                    <h3>Edit Washer Profile Details:</h3>
                     <div className="mb-1 row p-0 m-0">
                         <label className="form-label" htmlFor="firstname">
                             Firstname:
@@ -220,14 +218,13 @@ export default function OwnerProfileEdit() {
 
                         <NavLink
                             className="btn btn-danger"
-                            to={routes.DASHBOARD_OWNER}
+                            to={routes.DASHBOARD_WASHER}
                         >
                             Return
                         </NavLink>
                     </div>
                 </form>
             )}
-
             {show && (
                 <SuccessModal show={show} onClose={() => setShow(false)} />
             )}

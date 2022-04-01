@@ -3,7 +3,6 @@ const endpoint = "/owners/";
 
 const getCurrentOwner = (data) => {
     var credential_id = data.credential_id;
-    console.log("DO WE GET GERE");
     return client.get(endpoint + credential_id);
 };
 
@@ -12,7 +11,14 @@ const insertNewOwner = (data) => {
     return client.post(endpoint, data);
 };
 
+const updateOwner = (data) => {
+    var credential_id = data.credential_id;
+    console.log(data);
+    return client.post(endpoint + credential_id, data);
+};
+
 export default {
     getCurrentOwner,
     insertNewOwner,
+    updateOwner,
 };
