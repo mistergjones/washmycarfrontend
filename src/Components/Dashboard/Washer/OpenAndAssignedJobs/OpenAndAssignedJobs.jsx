@@ -33,7 +33,7 @@ export default function OpenAndAssignedJobs(props) {
                             <th>Washing</th>
                             <th>Fee</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Distance</th>
                             <th>Action</th>
                         </tr>
                     </thead>

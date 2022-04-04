@@ -31,11 +31,15 @@ export default function ProfileForm() {
             ["inputSuburb"]: result.address.locality,
             ["inputState"]: result.address.adminDistrict,
             ["inputPostcode"]: result.address.postalCode,
+            ["inputLat"]: result.location.latitude,
+            ["inputLng"]: result.location.longitude,
         });
+
+        console.log("Ther esult is:", result);
     };
+
     useEffect(() => {
         window.selectedSuggestion = function (result) {
-            //setAddress(result);
             splitAddressUpdateAddressFields(result);
         };
         loadBMaps(() => console.log("call back"));
@@ -49,6 +53,8 @@ export default function ProfileForm() {
         inputSuburb: "",
         inputState: "",
         inputPostcode: "",
+        inputLat: "",
+        inputLng: "",
         inputMobile: "",
         inputEmail: user.email,
         inputDOB: "",
@@ -58,6 +64,8 @@ export default function ProfileForm() {
         inputBSB: "",
         inputAccountNumber: "",
     });
+
+    console.log("Form inputs are", formInputs);
 
     // obtain both specific API function we are invoking
     const { request: postNewOwnerData } = useApi(ownersApi.insertNewOwner);

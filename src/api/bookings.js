@@ -5,6 +5,16 @@ const insertNewBooking = (data) => {
     return client.post(endpoint, data);
 };
 
+const updateBookingWithAssignedWasher = (data) => {
+    var booking_id = data.booking_id;
+    return client.patch(endpoint + booking_id, data);
+};
+
+// just get all the open bookings
+const getOpenBookings = () => {
+    return client.get(endpoint + "openlistings/");
+};
+
 const getAssignedBookings = (data) => {
     var credential_id = data.credential_id;
 
@@ -32,6 +42,8 @@ const getAllOwnerCompletedJobs = (data) => {
 
 export default {
     insertNewBooking,
+    updateBookingWithAssignedWasher,
+    getOpenBookings,
     getAssignedBookings,
     getAllWasherCompletedJobs,
     getAllOwnerCompletedJobs,

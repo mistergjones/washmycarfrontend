@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function ViewJobModal(props) {
-    console.log("View Job Modal -> Props are: ", props);
     return (
         <div>
             <div className="modalBox">
@@ -11,7 +10,20 @@ export default function ViewJobModal(props) {
                     </div>
 
                     <div className="modal-body">
-                        Feel free to close this message
+                        <div>
+                            <h5>
+                                Owner Name: {props.info.firstname}{" "}
+                                {props.info.lastname}{" "}
+                            </h5>
+                        </div>
+                        <div>
+                            <h5>Vehicle to be washed</h5>
+                            <img
+                                src={props.info.vehicle_photo}
+                                width="100%"
+                                alt=""
+                            />
+                        </div>
                     </div>
 
                     <div className="modal-footer">
