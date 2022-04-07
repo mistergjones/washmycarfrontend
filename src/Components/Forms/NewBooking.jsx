@@ -15,6 +15,7 @@ export default function NewBooking() {
 
     // establish which specific API function we are invoking
     const { request: postNewBooking } = useApi(bookingsApi.insertNewBooking);
+    // need to obtain the owner id so we can update the booking with it.
 
     const handleChange = (event) => {
         const inputName = event.target.name;

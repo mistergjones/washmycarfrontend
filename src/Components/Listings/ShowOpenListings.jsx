@@ -13,8 +13,8 @@ import routes from "../../Routes/routes";
 import * as geokit from "geokit";
 
 export default function ShowOpenListings(props) {
+    // 1.0 get open booking data
     const data = props.data;
-    console.log(props.data);
 
     // Washer LAT LNT into an Object
     const washerLatLngDataObj = props.washerInfo;
@@ -53,20 +53,23 @@ export default function ShowOpenListings(props) {
 
     // if washer accepts, update the booking
     const onAccept = async (e) => {
-        const data = {
+        const requiredInfoObj = {
+            washer_id: props.washer_id,
             booking_id: booking_id,
-            credential_id: user.credential_id,
         };
 
         try {
             // 1.0 need to update the database
-            const result = await updateBookingWithWasher(data);
+            const result = await updateBookingWithWasher(requiredInfoObj);
 
             if (result.data.rowCount == 1) {
                 setUpdatedRow(true);
             }
         } catch (error) {
-            console.log("WHAT I THE ERROR", error);
+            console.log(
+                "Error in updating a Booking with Washer Information",
+                error
+            );
         }
 
         setShowModal(false);

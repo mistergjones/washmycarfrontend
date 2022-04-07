@@ -58,14 +58,13 @@ export default function ProfileForm() {
         inputMobile: "",
         inputEmail: user.email,
         inputDOB: "",
+        inputVehicleType: "",
         inputCarPhoto: "",
         inputProfilePhoto: "",
         inputBankName: "",
         inputBSB: "",
         inputAccountNumber: "",
     });
-
-    console.log("Form inputs are", formInputs);
 
     // obtain both specific API function we are invoking
     const { request: postNewOwnerData } = useApi(ownersApi.insertNewOwner);
@@ -282,28 +281,68 @@ export default function ProfileForm() {
                             />
                         </div>
 
-                        <div className="col">
+                        <div className="row">
                             {user.type === "O" ? (
-                                <label htmlFor="inputCarPhoto">
-                                    Car To Be Washed:
-                                    <input
-                                        className="form-control"
-                                        name="inputCarPhoto"
-                                        type="file"
-                                        onChange={(e) =>
-                                            setImage(e.target.files[0])
-                                        }
-                                    ></input>
-                                    {image && (
+                                <>
+                                    <label htmlFor="">
+                                        Select Your Vehicle Type:
+                                    </label>
+                                    <div
+                                        name="inputVehicleType"
+                                        className="btn-group btn-group-sm "
+                                        role="group"
+                                        aria-label="Basic example"
+                                    >
                                         <button
-                                            className="btn btn-primary"
                                             type="button"
-                                            onClick={uploadImage}
+                                            className="btn btn-primary m-3"
+                                            value="1"
+                                            onClick={handleChange}
+                                            name="inputVehicleType"
                                         >
-                                            Upload
+                                            Car
                                         </button>
-                                    )}
-                                </label>
+                                        <button
+                                            type="button"
+                                            className="btn btn-primary m-3"
+                                            value="2"
+                                            onClick={handleChange}
+                                            name="inputVehicleType"
+                                        >
+                                            Ute
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className="btn btn-primary m-3"
+                                            value="3"
+                                            onClick={handleChange}
+                                            name="inputVehicleType"
+                                        >
+                                            Truck
+                                        </button>
+                                    </div>
+
+                                    <label htmlFor="inputCarPhoto">
+                                        Upload Vehicle To Be Washed:
+                                        <input
+                                            className="form-control"
+                                            name="inputCarPhoto"
+                                            type="file"
+                                            onChange={(e) =>
+                                                setImage(e.target.files[0])
+                                            }
+                                        ></input>
+                                        {image && (
+                                            <button
+                                                className="btn btn-primary"
+                                                type="button"
+                                                onClick={uploadImage}
+                                            >
+                                                Upload
+                                            </button>
+                                        )}
+                                    </label>
+                                </>
                             ) : (
                                 <label htmlFor="inputProfilePhoto">
                                     Your Profile Photo:

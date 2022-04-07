@@ -4,10 +4,11 @@ import ViewJobModal from "../../../Modals/ViewJobModal";
 import "./CompletedJobs.css";
 
 export default function CompletedJobs(props) {
-    const data = props.data;
+    const data = props.data.data;
 
     const [showModal, setShowModal] = useState(false);
     const [booking_id, setBooking_id] = useState("");
+    const [isThereDataToShow, SetIsThereDataToShow] = useState(false);
 
     const showJobModal = (e) => {
         setBooking_id(e.target.value);
@@ -20,6 +21,14 @@ export default function CompletedJobs(props) {
         console.log("ACCEPTED");
         setShowModal(false);
     };
+
+    useEffect(() => {
+        // if there is no data, only display the headings and its box
+        if (props.data.data.data == 0) {
+            SetIsThereDataToShow(false);
+        }
+        return () => {};
+    }, [isThereDataToShow]);
 
     return (
         <div className="completed-jobs-container">
@@ -36,30 +45,32 @@ export default function CompletedJobs(props) {
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {data.map((historialRowItem, index) => (
-                        <tr key={index}>
-                            <td>{historialRowItem.date}</td>
-                            <td>{historialRowItem.start_time}</td>
-                            <td>{historialRowItem.vehicle_type}</td>
+                {isThereDataToShow && (
+                    <tbody>
+                        {data.map((historialRowItem, index) => (
+                            <tr key={index}>
+                                <td>{historialRowItem.date}</td>
+                                <td>{historialRowItem.start_time}</td>
+                                <td>{historialRowItem.vehicle_type}</td>
 
-                            <td>{historialRowItem.service_fee}</td>
-                            <td>{historialRowItem.suburb}</td>
-                            <td>
-                                <button
-                                    className="btn btn-primary"
-                                    // onClick={handleCancel}
-                                    value={
-                                        historialRowItem.washerCompletedProof
-                                    }
-                                    onClick={showJobModal}
-                                >
-                                    View
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
+                                <td>{historialRowItem.service_fee}</td>
+                                <td>{historialRowItem.suburb}</td>
+                                <td>
+                                    <button
+                                        className="btn btn-primary"
+                                        // onClick={handleCancel}
+                                        value={
+                                            historialRowItem.washerCompletedProof
+                                        }
+                                        onClick={showJobModal}
+                                    >
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                )}
             </table>
             {showModal && (
                 <ViewJobModal

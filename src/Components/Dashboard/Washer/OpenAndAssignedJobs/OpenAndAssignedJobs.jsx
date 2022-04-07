@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ViewJobModal from "../../../Modals/ViewJobModal";
 
 export default function OpenAndAssignedJobs(props) {
-    let data = props.data;
+    let data = props.data.data;
 
     const [showModal, setShowModal] = useState(false);
     const [booking_id, setBooking_id] = useState("");

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import useApi from "../../hooks/useApi";
 import bookingsApi from "../../api/bookings";
+import washersApi from "../../api/washers";
 import "./DashboardScreenWasherContent.css";
 
 import AuthContext from "../../context/authContext";
@@ -12,7 +13,12 @@ export default function DashboardScreenWasherContent() {
     const { user, setUser } = useContext(AuthContext);
     const [assignedBookings, setAssignedBookings] = useState({});
     const [completedBookings, setCompletedBookings] = useState({});
+
     const [isDataLoaded, setIsDataLoaded] = useState(false);
+
+    const [washerInfo, setWasherInfo] = useState(null);
+
+    const { request: getWasherDetails } = useApi(washersApi.getCurrentWasher);
 
     const { request: getWasherCompletedJobs } = useApi(
         bookingsApi.getAllWasherCompletedJobs
@@ -26,13 +32,25 @@ export default function DashboardScreenWasherContent() {
         // get all open and assigned bookings
         const getWasherAssignedCompletedJobs = async () => {
             try {
-                const completedJobs = await getWasherCompletedJobs(user);
-                setCompletedBookings(completedJobs.data);
+                // get washer id
+                const tempWasherInfo = await getWasherDetails(user);
+                setWasherInfo(tempWasherInfo.data[0]);
 
-                const openAssignedJobs = await getAssignedBookings(user);
-                setAssignedBookings(openAssignedJobs.data);
+                // pass the tempWasher response object directly to the query below
+                const completedJobs = await getWasherCompletedJobs(
+                    tempWasherInfo.data[0]
+                );
+                setCompletedBookings(completedJobs);
+
+                // pass the tempWasher response object directly to the query below
+                const openAssignedJobs = await getAssignedBookings(
+                    tempWasherInfo.data[0]
+                );
+                setAssignedBookings(openAssignedJobs);
 
                 setIsDataLoaded(true);
+
+                // setIsGetOpenAssignedJobsCompleted(true);
             } catch (error) {
                 console.log("WHAT IS HAPPENIG HERE", error);
             }

@@ -13,7 +13,8 @@ import ProfileRedirect from "../../ProfileRedirect/ProfileRedirect";
 export default function WasherViewOpenJobsScreenContent() {
     const { user, setUser } = useContext(AuthContext);
     const [allListings, setAllListings] = useState(null);
-    const [allWasherInfo, setAllWasherInfo] = useState(null);
+    const [washerGeoLocation, setWasherGeoLocation] = useState(null);
+    const [washerID, setWasherID] = useState(null);
     const [isDataLoaded, setIsDataLoaded] = useState(null);
     const [isWasherLoaded, setIsWasherLoaded] = useState(false);
 
@@ -49,7 +50,8 @@ export default function WasherViewOpenJobsScreenContent() {
                 lat: Number(result.data[0].lat),
                 lng: Number(result.data[0].lng),
             };
-            setAllWasherInfo(tempLatLngData);
+            setWasherGeoLocation(tempLatLngData);
+            setWasherID(result.data[0].washer_id);
             setIsWasherLoaded(true);
         } catch (error) {}
     };
@@ -67,7 +69,8 @@ export default function WasherViewOpenJobsScreenContent() {
             {isDataLoaded && isWasherLoaded && (
                 <ShowOpenListings
                     data={allListings}
-                    washerInfo={allWasherInfo}
+                    washerInfo={washerGeoLocation}
+                    washer_id={washerID}
                 />
             )}
         </div>

@@ -1,126 +1,8 @@
 import React from "react";
 import "./OpenAssignedJobs.css";
 
-export default function OpenAssignedJobs({ data2, handleCancel }) {
-    const data = [
-        {
-            date: "01/01/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "1",
-        },
-        {
-            date: "01/02/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "2",
-        },
-        {
-            date: "01/03/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "3",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-        {
-            date: "01/04/22",
-            start_time: "10 am",
-            service_type: "Car",
-
-            firstname: "Glen",
-            lastname: "Jones",
-            booking_id: "4",
-        },
-    ];
+export default function OpenAssignedJobs(props) {
+    const data = props.infoToPass;
 
     return (
         <div className="open-assigned-jobs-container">
@@ -131,7 +13,7 @@ export default function OpenAssignedJobs({ data2, handleCancel }) {
                     <tr>
                         <th>Date</th>
                         <th>Start Time</th>
-                        <th>Service</th>
+                        <th>Washing Your</th>
                         <th>Washer Name</th>
                         <th></th>
                         <th>Action</th>
@@ -142,22 +24,33 @@ export default function OpenAssignedJobs({ data2, handleCancel }) {
                         <tr key={index}>
                             <td>{historialRowItem.date}</td>
                             <td>{historialRowItem.start_time}</td>
-                            <td>{historialRowItem.service_type}</td>
+                            <td>{historialRowItem.vehicle_type}</td>
 
                             <td>
-                                {historialRowItem.firstname +
-                                    " " +
-                                    historialRowItem.lastname}
+                                {historialRowItem.firstname === null
+                                    ? "Not Assigned"
+                                    : historialRowItem.firstname +
+                                      " " +
+                                      historialRowItem.lastname}
                             </td>
                             <td></td>
                             <td>
-                                <button
-                                    className="btn btn-primary"
-                                    // onClick={handleCancel}
-                                    value={historialRowItem.booking_id}
-                                >
-                                    Cancel
-                                </button>
+                                {historialRowItem.firstname !== null ? (
+                                    <button
+                                        className="btn btn-primary"
+                                        // onClick={handleCancel}
+                                        value={historialRowItem.booking_id}
+                                    >
+                                        Cancel
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="btn btn-grey"
+                                        disabled={true}
+                                    >
+                                        N/a
+                                    </button>
+                                )}
                             </td>
                         </tr>
                     ))}
