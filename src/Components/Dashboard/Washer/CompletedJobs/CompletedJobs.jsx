@@ -26,6 +26,8 @@ export default function CompletedJobs(props) {
         // if there is no data, only display the headings and its box
         if (props.data.data.data == 0) {
             SetIsThereDataToShow(false);
+        } else {
+            SetIsThereDataToShow(true);
         }
         return () => {};
     }, [isThereDataToShow]);
@@ -39,8 +41,8 @@ export default function CompletedJobs(props) {
                     <tr>
                         <th>Date</th>
                         <th>Start Time</th>
-                        <th>Washed</th>
-                        <th>Fee</th>
+                        <th>Vehicle</th>
+                        <th>Income</th>
                         <th>Suburb</th>
                         <th>Action</th>
                     </tr>
@@ -51,8 +53,7 @@ export default function CompletedJobs(props) {
                             <tr key={index}>
                                 <td>{historialRowItem.date}</td>
                                 <td>{historialRowItem.start_time}</td>
-                                <td>{historialRowItem.vehicle_type}</td>
-
+                                <td>{historialRowItem.service_type}</td>
                                 <td>{historialRowItem.service_fee}</td>
                                 <td>{historialRowItem.suburb}</td>
                                 <td>

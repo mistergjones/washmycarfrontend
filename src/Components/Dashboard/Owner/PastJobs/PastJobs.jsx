@@ -11,7 +11,7 @@ export default function PastJobs(props) {
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Booked Time</th>
+                        {/* <th>Booked Time</th> */}
                         <th>Washed Your</th>
                         <th>Total Paid</th>
                         <th>Washer Name</th>
@@ -23,9 +23,9 @@ export default function PastJobs(props) {
                     {data.map((historialRowItem, index) => (
                         <tr key={index}>
                             <td>{historialRowItem.date}</td>
-                            <td>{historialRowItem.start_time}</td>
-                            <td>{historialRowItem.vehicle_type}</td>
-                            <td>{historialRowItem.service_fee}</td>
+                            {/* <td>{historialRowItem.start_time}</td> */}
+                            <td>{historialRowItem.service_type}</td>
+                            <td>{historialRowItem.service_fee + 5}</td>
                             <td>
                                 {historialRowItem.firstname +
                                     " " +

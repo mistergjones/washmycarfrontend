@@ -19,8 +19,8 @@ export default function ViewJobModal(props) {
                         <div>
                             <h5>Vehicle to be washed</h5>
                             <img
-                                src={props.info.vehicle_photo}
-                                width="100%"
+                                src={props.info.car_photo}
+                                width="50%"
                                 alt=""
                             />
                         </div>

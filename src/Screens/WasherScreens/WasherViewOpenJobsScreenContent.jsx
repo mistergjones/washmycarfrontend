@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+
 import ShowOpenListings from "../../Components/Listings/ShowOpenListings";
 
 import routes from "../../Routes/routes";
@@ -9,6 +10,8 @@ import washersApi from "../../api/washers";
 import AuthContext from "../../context/authContext";
 import jwtService from "../../storage/jwt";
 import ProfileRedirect from "../../ProfileRedirect/ProfileRedirect";
+
+import makeGeoLocationDataObject from "../../Helpers/geoLocationDataObject";
 
 export default function WasherViewOpenJobsScreenContent() {
     const { user, setUser } = useContext(AuthContext);
@@ -26,17 +29,10 @@ export default function WasherViewOpenJobsScreenContent() {
         try {
             const result = await getOpenBookings();
 
-            var aa = result.data;
-            aa.forEach((record) => {
-                record["lat"] = Number(record.lat);
-                record["lng"] = Number(record.lng);
-                record["geolocation"] = {
-                    lat: Number(record.lat),
-                    lng: Number(record.lng),
-                };
-            });
+            // call function to build in a geolocation data object to calcualte distance
+            var dataWithGeoLocationObj = makeGeoLocationDataObject(result);
 
-            setAllListings(aa);
+            setAllListings(dataWithGeoLocationObj);
             setIsDataLoaded(true);
         } catch (error) {}
     };
@@ -64,8 +60,8 @@ export default function WasherViewOpenJobsScreenContent() {
     }, []);
 
     return (
-        <div>
-            <h3>Washer can view jobs screen</h3>asd
+        <div className="glen">
+            <h3>Washer can view jobs screen</h3>
             {isDataLoaded && isWasherLoaded && (
                 <ShowOpenListings
                     data={allListings}

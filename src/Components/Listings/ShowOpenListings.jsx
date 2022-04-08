@@ -41,7 +41,7 @@ export default function ShowOpenListings(props) {
                 if (item[key] == e.target.value) {
                     dataObj["firstname"] = item["firstname"];
                     dataObj["lastname"] = item["lastname"];
-                    dataObj["vehicle_photo"] = item["vehicle_photo"];
+                    dataObj["car_photo"] = item["car_photo"];
                 }
             }
         });

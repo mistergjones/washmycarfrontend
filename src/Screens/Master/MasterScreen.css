@@ -19,6 +19,7 @@
     border: 3px solid black;
     background-color: rgb(243, 245, 245);
     height: 90vh;
+    overflow: scroll;
 }
 
 .footer-container {

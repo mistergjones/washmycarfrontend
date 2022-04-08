@@ -14,8 +14,9 @@ export default function OpenAssignedJobs(props) {
                         <th>Date</th>
                         <th>Start Time</th>
                         <th>Washing Your</th>
+                        <th>Paying</th>
                         <th>Washer Name</th>
-                        <th></th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -24,7 +25,16 @@ export default function OpenAssignedJobs(props) {
                         <tr key={index}>
                             <td>{historialRowItem.date}</td>
                             <td>{historialRowItem.start_time}</td>
-                            <td>{historialRowItem.vehicle_type}</td>
+                            <td>
+                                {!historialRowItem.service_type
+                                    ? "N/a"
+                                    : historialRowItem.service_type}
+                            </td>
+                            <td>
+                                {!historialRowItem.service_fee
+                                    ? "$0"
+                                    : "$" + historialRowItem.service_fee}
+                            </td>
 
                             <td>
                                 {historialRowItem.firstname === null
@@ -33,7 +43,8 @@ export default function OpenAssignedJobs(props) {
                                       " " +
                                       historialRowItem.lastname}
                             </td>
-                            <td></td>
+                            <td>{historialRowItem.booking_status}</td>
+
                             <td>
                                 {historialRowItem.firstname !== null ? (
                                     <button

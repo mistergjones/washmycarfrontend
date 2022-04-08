@@ -8,6 +8,7 @@ import AuthContext from "../../context/authContext";
 import CompletedJobs from "../../Components/Dashboard/Washer/CompletedJobs/CompletedJobs";
 import OpenAndAssignedJobs from "../../Components/Dashboard/Washer/OpenAndAssignedJobs/OpenAndAssignedJobs";
 import EditProfile from "../../Components/Dashboard/Washer/Profile/EditProfile";
+import makeGeoLocationDataObject from "../../Helpers/geoLocationDataObject";
 
 export default function DashboardScreenWasherContent() {
     const { user, setUser } = useContext(AuthContext);
@@ -16,7 +17,7 @@ export default function DashboardScreenWasherContent() {
 
     const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-    const [washerInfo, setWasherInfo] = useState(null);
+    const [washerGeoInfo, setWasherGeoInfo] = useState(null);
 
     const { request: getWasherDetails } = useApi(washersApi.getCurrentWasher);
 
@@ -34,7 +35,11 @@ export default function DashboardScreenWasherContent() {
             try {
                 // get washer id
                 const tempWasherInfo = await getWasherDetails(user);
-                setWasherInfo(tempWasherInfo.data[0]);
+                let tempLatLngData = {
+                    lat: Number(tempWasherInfo.data[0].lat),
+                    lng: Number(tempWasherInfo.data[0].lng),
+                };
+                setWasherGeoInfo(tempLatLngData);
 
                 // pass the tempWasher response object directly to the query below
                 const completedJobs = await getWasherCompletedJobs(
@@ -46,7 +51,12 @@ export default function DashboardScreenWasherContent() {
                 const openAssignedJobs = await getAssignedBookings(
                     tempWasherInfo.data[0]
                 );
-                setAssignedBookings(openAssignedJobs);
+
+                // establish geolocation objectin the data resiults
+                var geoLocationObj = makeGeoLocationDataObject(
+                    openAssignedJobs
+                );
+                setAssignedBookings(geoLocationObj);
 
                 setIsDataLoaded(true);
 
@@ -69,7 +79,12 @@ export default function DashboardScreenWasherContent() {
 
             <EditProfile />
             {isDataLoaded && <CompletedJobs data={completedBookings} />}
-            {isDataLoaded && <OpenAndAssignedJobs data={assignedBookings} />}
+            {isDataLoaded && (
+                <OpenAndAssignedJobs
+                    data={assignedBookings}
+                    washerInfo={washerGeoInfo}
+                />
+            )}
         </div>
     );
 }

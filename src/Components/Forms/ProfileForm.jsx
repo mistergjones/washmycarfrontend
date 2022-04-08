@@ -296,7 +296,7 @@ export default function ProfileForm() {
                                         <button
                                             type="button"
                                             className="btn btn-primary m-3"
-                                            value="1"
+                                            value="2"
                                             onClick={handleChange}
                                             name="inputVehicleType"
                                         >
@@ -305,7 +305,7 @@ export default function ProfileForm() {
                                         <button
                                             type="button"
                                             className="btn btn-primary m-3"
-                                            value="2"
+                                            value="3"
                                             onClick={handleChange}
                                             name="inputVehicleType"
                                         >
@@ -314,7 +314,7 @@ export default function ProfileForm() {
                                         <button
                                             type="button"
                                             className="btn btn-primary m-3"
-                                            value="3"
+                                            value="4"
                                             onClick={handleChange}
                                             name="inputVehicleType"
                                         >

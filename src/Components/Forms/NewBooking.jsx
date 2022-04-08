@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./NewBooking.css";
 
 import useApi from "../../hooks/useApi";
 import bookingsApi from "../../api/bookings";
+import AuthContext from "../../context/authContext";
 
 export default function NewBooking() {
+    const { user, setUser } = useContext(AuthContext);
+
     // establish object for all Form Inputs
     const [formInputs, setformInputs] = useState({
         whatVehicle: "",
         whatDate: "",
         whatTime: "",
         whatInstructions: "",
+        credential_id: user.credential_id,
     });
 
     // establish which specific API function we are invoking
