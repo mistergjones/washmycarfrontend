@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import ViewJobModal from "../../../Modals/ViewJobModal";
 // used for calculating geo distances
@@ -11,6 +11,7 @@ export default function OpenAndAssignedJobs(props) {
     const [showModal, setShowModal] = useState(false);
     const [booking_id, setBooking_id] = useState("");
     const [modalData, setModalData] = useState({});
+    const [showCompleteButton, setShowCompleteButton] = useState(null);
 
     const showJobModal = (e) => {
         setBooking_id(e.target.value);
@@ -37,6 +38,33 @@ export default function OpenAndAssignedJobs(props) {
     const onAccept = () => {
         console.log("ACCEPTED");
         setShowModal(false);
+    };
+
+    const determineWhichButton = (historicalDate, historicalStartTime) => {
+        var currentDate = new Date().toLocaleDateString();
+        var aa = currentDate.split("/").reverse();
+        console.log("Current date", aa);
+        console.log("Database DAte", historicalDate.split("-"));
+
+        var currentTime = new Date().toLocaleTimeString();
+
+        // console.log("Historical date", historicalDate);
+
+        var hg = new Date().toLocaleDateString();
+
+        //console.log("Current time in milliseconds", new Date().getTime());
+
+        var datahour = parseInt(historicalStartTime.slice(0, 2));
+        var dataminute = parseInt(historicalStartTime.slice(3, 5));
+
+        var currentHour = parseInt(currentTime.slice(0, 2));
+        var currentMinute = parseInt(currentTime.slice(3, 5));
+        // console.log("Current Time", currentHour, currentMinute + 10);
+
+        var dataTotalMinutes = datahour * 60 + dataminute;
+        var currentTotalMinutes = currentHour * 60 + currentMinute;
+
+        if (currentTotalMinutes + 5 < dataTotalMinutes) return true;
     };
 
     return (
@@ -76,14 +104,28 @@ export default function OpenAndAssignedJobs(props) {
                                 </td>
 
                                 <td>
-                                    <button
-                                        className="btn btn-primary"
-                                        // onClick={handleCancel}
-                                        value={historialRowItem.booking_id}
-                                        onClick={showJobModal}
-                                    >
-                                        View
-                                    </button>
+                                    {determineWhichButton(
+                                        historialRowItem.date,
+                                        historialRowItem.start_time
+                                    ) ? (
+                                        <button
+                                            className="btn btn-primary"
+                                            // onClick={handleCancel}
+                                            value={historialRowItem.booking_id}
+                                            onClick={showJobModal}
+                                        >
+                                            View Details
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="btn btn-warning"
+                                            // onClick={handleCancel}
+                                            value={historialRowItem.booking_id}
+                                            onClick={showJobModal}
+                                        >
+                                            Complete
+                                        </button>
+                                    )}
                                 </td>
                             </tr>
                         ))}
