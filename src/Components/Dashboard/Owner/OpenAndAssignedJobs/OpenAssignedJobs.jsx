@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./OpenAssignedJobs.css";
+import FormatTimeForDisplay from "../../../../Helpers/FormatTimeForDisplay";
 
 export default function OpenAssignedJobs(props) {
-    const data = props.infoToPass;
+    var data = props.infoToPass;
+    const [isThereDataToShow, SetIsThereDataToShow] = useState(false);
+
+    // require the time to be in a human format display
+    data = FormatTimeForDisplay(data);
+
+    useEffect(() => {
+        if (props.infoToPass.length == 0) {
+            SetIsThereDataToShow(false);
+        } else {
+            SetIsThereDataToShow(true);
+        }
+        return () => {};
+    }, []);
 
     return (
         <div className="open-assigned-jobs-container">
@@ -21,50 +35,51 @@ export default function OpenAssignedJobs(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((historialRowItem, index) => (
-                        <tr key={index}>
-                            <td>{historialRowItem.date}</td>
-                            <td>{historialRowItem.start_time}</td>
-                            <td>
-                                {!historialRowItem.service_type
-                                    ? "N/a"
-                                    : historialRowItem.service_type}
-                            </td>
-                            <td>
-                                {!historialRowItem.service_fee
-                                    ? "$0"
-                                    : "$" + historialRowItem.service_fee}
-                            </td>
+                    {isThereDataToShow &&
+                        data.map((historialRowItem, index) => (
+                            <tr key={index}>
+                                <td>{historialRowItem.date}</td>
+                                <td>{historialRowItem.humanTime}</td>
+                                <td>
+                                    {!historialRowItem.service_type
+                                        ? "N/a"
+                                        : historialRowItem.service_type}
+                                </td>
+                                <td>
+                                    {!historialRowItem.service_fee
+                                        ? "$0"
+                                        : "$" + historialRowItem.service_fee}
+                                </td>
 
-                            <td>
-                                {historialRowItem.firstname === null
-                                    ? "Not Assigned"
-                                    : historialRowItem.firstname +
-                                      " " +
-                                      historialRowItem.lastname}
-                            </td>
-                            <td>{historialRowItem.booking_status}</td>
+                                <td>
+                                    {historialRowItem.firstname === null
+                                        ? "Not Assigned"
+                                        : historialRowItem.firstname +
+                                          " " +
+                                          historialRowItem.lastname}
+                                </td>
+                                <td>{historialRowItem.booking_status}</td>
 
-                            <td>
-                                {historialRowItem.firstname !== null ? (
-                                    <button
-                                        className="btn btn-primary"
-                                        // onClick={handleCancel}
-                                        value={historialRowItem.booking_id}
-                                    >
-                                        Cancel
-                                    </button>
-                                ) : (
-                                    <button
-                                        className="btn btn-grey"
-                                        disabled={true}
-                                    >
-                                        N/a
-                                    </button>
-                                )}
-                            </td>
-                        </tr>
-                    ))}
+                                <td>
+                                    {historialRowItem.firstname !== null ? (
+                                        <button
+                                            className="btn btn-primary"
+                                            // onClick={handleCancel}
+                                            value={historialRowItem.booking_id}
+                                        >
+                                            Cancel
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="btn btn-grey"
+                                            disabled={true}
+                                        >
+                                            N/a
+                                        </button>
+                                    )}
+                                </td>
+                            </tr>
+                        ))}
                 </tbody>
             </table>
         </div>

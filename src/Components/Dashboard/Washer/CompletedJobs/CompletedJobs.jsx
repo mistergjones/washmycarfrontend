@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from "react";
-import ViewJobModal from "../../../Modals/ViewJobModal";
+import ViewCarModal from "../../../Modals/ViewCarModal";
+import FormatTimeForDisplay from "../../../../Helpers/FormatTimeForDisplay";
 
 import "./CompletedJobs.css";
 
 export default function CompletedJobs(props) {
-    const data = props.data.data;
+    var data = props.data.data;
+
+    console.log("COMPLETD JOBS DTA IS", data.data);
+
+    // require the time to be in a human format display
+    if (data.data != 0) {
+        data = FormatTimeForDisplay(data);
+    }
 
     const [showModal, setShowModal] = useState(false);
-    const [booking_id, setBooking_id] = useState("");
+
+    const [carPhotoToShow, setCarPhotoToShow] = useState(null);
     const [isThereDataToShow, SetIsThereDataToShow] = useState(false);
 
     const showJobModal = (e) => {
-        setBooking_id(e.target.value);
-        console.log("Showthe modal", e.target.value);
+        // setBooking_id(e.target.value);
+
+        setCarPhotoToShow(e.target.value);
         setShowModal(true);
     };
 
@@ -25,8 +35,10 @@ export default function CompletedJobs(props) {
     useEffect(() => {
         // if there is no data, only display the headings and its box
         if (props.data.data.data == 0) {
+            console.log("IS THERE DATA TO SHLOW: FALSE");
             SetIsThereDataToShow(false);
         } else {
+            console.log("IS THERE DATA TO SHLOW: TRUE");
             SetIsThereDataToShow(true);
         }
         return () => {};
@@ -52,7 +64,7 @@ export default function CompletedJobs(props) {
                         {data.map((historialRowItem, index) => (
                             <tr key={index}>
                                 <td>{historialRowItem.date}</td>
-                                <td>{historialRowItem.start_time}</td>
+                                <td>{historialRowItem.humanTime}</td>
                                 <td>{historialRowItem.service_type}</td>
                                 <td>{historialRowItem.service_fee}</td>
                                 <td>{historialRowItem.suburb}</td>
@@ -61,11 +73,11 @@ export default function CompletedJobs(props) {
                                         className="btn btn-primary"
                                         // onClick={handleCancel}
                                         value={
-                                            historialRowItem.washerCompletedProof
+                                            historialRowItem.washer_completed_proof
                                         }
                                         onClick={showJobModal}
                                     >
-                                        View
+                                        View Photo
                                     </button>
                                 </td>
                             </tr>
@@ -74,9 +86,9 @@ export default function CompletedJobs(props) {
                 )}
             </table>
             {showModal && (
-                <ViewJobModal
+                <ViewCarModal
                     show={showModal}
-                    data={booking_id}
+                    data={carPhotoToShow}
                     onClose={() => setShowModal(false)}
                     onAccept={onAccept}
                 />

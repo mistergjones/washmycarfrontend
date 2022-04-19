@@ -10,6 +10,23 @@ const updateBookingWithAssignedWasher = (data) => {
     return client.patch(endpoint + booking_id, data);
 };
 
+const updateBookingOwnerConfirmsCompleted = (data) => {
+    const carPhoto = { washer_completed_proof: data };
+
+    return client.post(endpoint + "ownerverifies/", carPhoto);
+};
+
+const updateBookingOwnerMakesPayment = (data) => {
+    var booking_id = data.booking_id;
+    return client.post(endpoint + "ownermakespayment/" + booking_id, data);
+};
+
+// WASHER HAS COMPLETD / VERIRIED THAT THE JOB IS COMPLETE
+const updateBookingThatIsWasherCompleted = (data) => {
+    var booking_id = data.booking_id;
+    return client.post(endpoint + booking_id, data);
+};
+
 // just get all the open bookings
 const getOpenBookings = () => {
     return client.get(endpoint + "openlistings/");
@@ -54,6 +71,9 @@ const getOwnerOpenBookings = (data) => {
 export default {
     insertNewBooking,
     updateBookingWithAssignedWasher,
+    updateBookingThatIsWasherCompleted,
+    updateBookingOwnerConfirmsCompleted,
+    updateBookingOwnerMakesPayment,
     getOpenBookings,
     getAssignedBookings,
     getAllWasherCompletedJobs,

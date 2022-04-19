@@ -1,29 +1,21 @@
 import React from "react";
 
-export default function ViewJobModal(props) {
-    console.log("PROPS IN VIEW JOB MODAL", props);
+export default function OnwerConfirmsCarWashModal(props) {
     return (
         <div>
             <div className="modalBox">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h1 className="modal-title">View Job Modal</h1>
+                        <h1 className="modal-title">View Car Modal</h1>
                     </div>
 
                     <div className="modal-body">
                         <div>
-                            <h5>
-                                Owner Name: {props.info.firstname}{" "}
-                                {props.info.lastname}{" "}
-                            </h5>
+                            <h5>This is the vehicle washed</h5>
                         </div>
                         <div>
-                            <h5>Vehicle to be washed</h5>
-                            <img
-                                src={props.info.car_photo}
-                                width="50%"
-                                alt=""
-                            />
+                            {/* <h5>Vehicle to be washed</h5> */}
+                            <img src={props.data} width="50%" alt="" />
                         </div>
                     </div>
 
@@ -38,7 +30,7 @@ export default function ViewJobModal(props) {
                             className="btn btn-primary"
                             onClick={props.onAccept}
                         >
-                            Accept
+                            Confirm Wash
                         </button>
                     </div>
                 </div>

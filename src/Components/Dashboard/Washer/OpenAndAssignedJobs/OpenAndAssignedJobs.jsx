@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import ViewJobModal from "../../../Modals/ViewJobModal";
+import UploadPhotoModal from "../../../Modals/UploadPhotoModal";
+import FormatTimeForDisplay from "../../../../Helpers/FormatTimeForDisplay";
+
 // used for calculating geo distances
 import * as geokit from "geokit";
 
@@ -8,10 +11,14 @@ export default function OpenAndAssignedJobs(props) {
     let data = props.data;
     let washerGeoLocation = props.washerInfo;
 
+    // require the time to be in a human format display
+    data = FormatTimeForDisplay(data);
+
     const [showModal, setShowModal] = useState(false);
     const [booking_id, setBooking_id] = useState("");
     const [modalData, setModalData] = useState({});
     const [showCompleteButton, setShowCompleteButton] = useState(null);
+    const [uploadPhotoModal, setUploadPhotoModal] = useState(null);
 
     const showJobModal = (e) => {
         setBooking_id(e.target.value);
@@ -34,37 +41,28 @@ export default function OpenAndAssignedJobs(props) {
         setShowModal(true);
     };
 
+    const updateJobWithPhoto = (e) => {
+        console.log("Booking ID", e.target.value);
+
+        // 1.0 uploading photo to Cloudinary
+        setUploadPhotoModal(true);
+
+        // 2.0 updating the database with relevant details
+        setBooking_id(e.target.value);
+    };
+
     // if washer accepts, update the booking
     const onAccept = () => {
         console.log("ACCEPTED");
         setShowModal(false);
     };
 
-    const determineWhichButton = (historicalDate, historicalStartTime) => {
-        var currentDate = new Date().toLocaleDateString();
-        var aa = currentDate.split("/").reverse();
-        console.log("Current date", aa);
-        console.log("Database DAte", historicalDate.split("-"));
+    const determineWhichButton = (historicalStartTime) => {
+        var currentDate = new Date().getTime();
+        var fiveMinutesInMilliseconds = 300000;
 
-        var currentTime = new Date().toLocaleTimeString();
-
-        // console.log("Historical date", historicalDate);
-
-        var hg = new Date().toLocaleDateString();
-
-        //console.log("Current time in milliseconds", new Date().getTime());
-
-        var datahour = parseInt(historicalStartTime.slice(0, 2));
-        var dataminute = parseInt(historicalStartTime.slice(3, 5));
-
-        var currentHour = parseInt(currentTime.slice(0, 2));
-        var currentMinute = parseInt(currentTime.slice(3, 5));
-        // console.log("Current Time", currentHour, currentMinute + 10);
-
-        var dataTotalMinutes = datahour * 60 + dataminute;
-        var currentTotalMinutes = currentHour * 60 + currentMinute;
-
-        if (currentTotalMinutes + 5 < dataTotalMinutes) return true;
+        if (currentDate + fiveMinutesInMilliseconds < historicalStartTime)
+            return true;
     };
 
     return (
@@ -88,7 +86,7 @@ export default function OpenAndAssignedJobs(props) {
                         {data.map((historialRowItem, index) => (
                             <tr key={index}>
                                 <td>{historialRowItem.date}</td>
-                                <td>{historialRowItem.start_time}</td>
+                                <td>{historialRowItem.humanTime}</td>
                                 <td>{historialRowItem.service_type}</td>
                                 <td>{historialRowItem.service_fee}</td>
                                 {/* <td>{historialRowItem.booking_status}</td> */}
@@ -105,7 +103,6 @@ export default function OpenAndAssignedJobs(props) {
 
                                 <td>
                                     {determineWhichButton(
-                                        historialRowItem.date,
                                         historialRowItem.start_time
                                     ) ? (
                                         <button
@@ -121,9 +118,9 @@ export default function OpenAndAssignedJobs(props) {
                                             className="btn btn-warning"
                                             // onClick={handleCancel}
                                             value={historialRowItem.booking_id}
-                                            onClick={showJobModal}
+                                            onClick={updateJobWithPhoto}
                                         >
-                                            Complete
+                                            &nbsp;&nbsp;&nbsp;&nbsp;Update&nbsp;&nbsp;&nbsp;&nbsp;
                                         </button>
                                     )}
                                 </td>
@@ -137,6 +134,15 @@ export default function OpenAndAssignedJobs(props) {
                         info={modalData}
                         onClose={() => setShowModal(false)}
                         onAccept={onAccept}
+                    />
+                )}
+                {uploadPhotoModal && (
+                    <UploadPhotoModal
+                        show={uploadPhotoModal}
+                        info={modalData}
+                        onClose={() => setUploadPhotoModal(false)}
+                        onAccept={onAccept}
+                        booking_id={booking_id}
                     />
                 )}
             </div>

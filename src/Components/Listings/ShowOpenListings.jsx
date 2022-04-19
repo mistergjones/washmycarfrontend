@@ -8,13 +8,17 @@ import useApi from "../../hooks/useApi";
 import bookingsApi from "../../api/bookings";
 import AuthContext from "../../context/authContext";
 import routes from "../../Routes/routes";
+import FormatTimeForDisplay from "../../Helpers/FormatTimeForDisplay";
 
 // used for calculating geo distances
 import * as geokit from "geokit";
 
 export default function ShowOpenListings(props) {
     // 1.0 get open booking data
-    const data = props.data;
+    var data = props.data;
+
+    // require the time to be in a human format display
+    data = FormatTimeForDisplay(data);
 
     // Washer LAT LNT into an Object
     const washerLatLngDataObj = props.washerInfo;
@@ -108,7 +112,7 @@ export default function ShowOpenListings(props) {
                         {data.map((openListingItem, index) => (
                             <tr key={index}>
                                 <td>{openListingItem.date}</td>
-                                <td>{openListingItem.start_time}</td>
+                                <td>{openListingItem.humanTime}</td>
                                 <td>{openListingItem.vehicle_type}</td>
 
                                 <td>{openListingItem.service_fee}</td>
