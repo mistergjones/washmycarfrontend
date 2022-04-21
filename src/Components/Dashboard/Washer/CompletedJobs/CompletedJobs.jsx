@@ -7,8 +7,6 @@ import "./CompletedJobs.css";
 export default function CompletedJobs(props) {
     var data = props.data.data;
 
-    console.log("COMPLETD JOBS DTA IS", data.data);
-
     // require the time to be in a human format display
     if (data.data != 0) {
         data = FormatTimeForDisplay(data);
@@ -46,7 +44,7 @@ export default function CompletedJobs(props) {
 
     return (
         <div className="completed-jobs-container">
-            <h3>WASHER FINISHED JOBS</h3>
+            <h3>Your Completed Jobs</h3>
 
             <table className="table table-striped table-hover fixed_header">
                 <thead>

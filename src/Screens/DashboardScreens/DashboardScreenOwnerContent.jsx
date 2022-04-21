@@ -61,9 +61,9 @@ export default function DashboardScreenOwnerContent() {
 
     return (
         <div className="dsoc-container">
-            <h5>Dashboard Screen Content</h5>
+            {/* <h5>Dashboard Screen Content</h5>
 
-            <h3>The user tyoe is:{user.type}</h3>
+            <h3>The user tyoe is:{user.type}</h3> */}
 
             <EditProfile />
             {isDataLoaded && <PastJobs infoToPass={completedBookings} />}

@@ -20,7 +20,7 @@ export default function OpenAssignedJobs(props) {
 
     return (
         <div className="open-assigned-jobs-container">
-            <h3>Open and ASsigned Jobs</h3>
+            <h3>Your Open and Assigned Appointments</h3>
 
             <table className="table table-striped table-hover fixed_header">
                 <thead>

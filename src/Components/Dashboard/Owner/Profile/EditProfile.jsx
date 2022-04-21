@@ -6,6 +6,7 @@ import "./EditProfile.css";
 export default function EditProfile({ owner }) {
     return (
         <div className="edit-profile-container">
+            <h3>Your Profile</h3>
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>

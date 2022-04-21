@@ -8,7 +8,7 @@ export default function SignUpScreen() {
         <div>
             <MasterScreen
                 ScreenComponent={SignUpScreenContent}
-                heading={"This hte heading Sign Up Screne Content"}
+                heading={"Sign up to use our services"}
             />
         </div>
     );

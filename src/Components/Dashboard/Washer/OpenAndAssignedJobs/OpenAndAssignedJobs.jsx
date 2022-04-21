@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./OpenAndAssignedJobs.css";
 
 import ViewJobModal from "../../../Modals/ViewJobModal";
 import UploadPhotoModal from "../../../Modals/UploadPhotoModal";
@@ -68,7 +69,7 @@ export default function OpenAndAssignedJobs(props) {
     return (
         <div>
             <div className="open-assigned-jobs-container">
-                <h3>WASHER - Upcoming Assigned Jobs</h3>
+                <h3>Your upcoming assigned jobs</h3>
 
                 <table className="table table-striped table-hover fixed_header">
                     <thead>

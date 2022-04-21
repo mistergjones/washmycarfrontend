@@ -20,7 +20,7 @@
 }
 .hsc-lottie-animation {
     margin: 0 auto;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     height: 250px;
     width: 500px;
 }
@@ -28,7 +28,7 @@
 .hsc-form-buttons {
     display: grid;
     grid-gap: 0.3rem;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     margin: 0 auto;
     width: 500px;
 }

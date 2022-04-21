@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import "./ShowOpenListings.css";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -89,67 +90,69 @@ export default function ShowOpenListings(props) {
 
     return (
         <>
-            <div>
-                <h3>Open Listings here</h3>
-            </div>
+            <div className="open-listings-container">
+                <div>
+                    <h3>View Available Listings</h3>
+                </div>
 
-            <div>
-                <h1>This is where all the open listings go</h1>
+                <div>
+                    {/* <h1>This is where all the open listings go</h1> */}
 
-                <table className="table table-striped table-hover fixed_header">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Start Time</th>
-                            <th>Needs Washing</th>
-                            <th>Fee</th>
-                            <th>Suburb</th>
-                            <th>Distance (km)</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((openListingItem, index) => (
-                            <tr key={index}>
-                                <td>{openListingItem.date}</td>
-                                <td>{openListingItem.humanTime}</td>
-                                <td>{openListingItem.vehicle_type}</td>
-
-                                <td>{openListingItem.service_fee}</td>
-                                <td>{openListingItem.suburb}</td>
-                                <td>
-                                    {Number(
-                                        geokit
-                                            .distance(
-                                                washerLatLngDataObj,
-                                                openListingItem.geolocation
-                                            )
-                                            .toFixed(2)
-                                    )}
-                                </td>
-                                <td>
-                                    <button
-                                        className="btn btn-primary"
-                                        // onClick={handleCancel}
-                                        value={openListingItem.booking_id}
-                                        onClick={showJobModal}
-                                    >
-                                        View Details
-                                    </button>
-                                </td>
+                    <table className="table table-striped table-hover fixed_header">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>Needs Washing</th>
+                                <th>Fee</th>
+                                <th>Suburb</th>
+                                <th>Distance (km)</th>
+                                <th>Action</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-                {showModal && (
-                    <ViewJobModal
-                        show={showModal}
-                        data={booking_id}
-                        onClose={() => setShowModal(false)}
-                        onAccept={onAccept}
-                        info={displayData}
-                    />
-                )}
+                        </thead>
+                        <tbody>
+                            {data.map((openListingItem, index) => (
+                                <tr key={index}>
+                                    <td>{openListingItem.date}</td>
+                                    <td>{openListingItem.humanTime}</td>
+                                    <td>{openListingItem.vehicle_type}</td>
+
+                                    <td>{openListingItem.service_fee}</td>
+                                    <td>{openListingItem.suburb}</td>
+                                    <td>
+                                        {Number(
+                                            geokit
+                                                .distance(
+                                                    washerLatLngDataObj,
+                                                    openListingItem.geolocation
+                                                )
+                                                .toFixed(2)
+                                        )}
+                                    </td>
+                                    <td>
+                                        <button
+                                            className="btn btn-primary"
+                                            // onClick={handleCancel}
+                                            value={openListingItem.booking_id}
+                                            onClick={showJobModal}
+                                        >
+                                            View Details
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    {showModal && (
+                        <ViewJobModal
+                            show={showModal}
+                            data={booking_id}
+                            onClose={() => setShowModal(false)}
+                            onAccept={onAccept}
+                            info={displayData}
+                        />
+                    )}
+                </div>
             </div>
         </>
     );

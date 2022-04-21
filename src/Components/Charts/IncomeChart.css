@@ -1,0 +1,32 @@
+.chart-container {
+    /* height: 50vh; */
+
+    width: 100vw;
+    /* border: 3px solid green; */
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 10px;
+    grid-template-areas:
+        "chart1"
+        "chart2";
+}
+
+.chart1,
+.chart2,
+.chart3,
+.chart4 {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    border: 3px solid black;
+    border-radius: 1rem;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);
+}

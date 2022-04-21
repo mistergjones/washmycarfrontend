@@ -7,7 +7,7 @@ export default function DashboardScreenWasher() {
         <div>
             <MasterScreen
                 ScreenComponent={DashboardScreenWasherContent}
-                heading="Both DAshboard Screen Contents"
+                heading="Dashboard"
             />
         </div>
     );

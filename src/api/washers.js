@@ -16,10 +16,15 @@ const updateWasher = (data) => {
     return client.post(endpoint + credential_id, data);
 };
 
+const getWasherIncome = (credential_id) => {
+    return client.get(endpoint + "incomes/" + credential_id);
+};
+
 export default {
     // getUsers,
     // getUser,
     getCurrentWasher,
     insertNewWasher,
     updateWasher,
+    getWasherIncome,
 };

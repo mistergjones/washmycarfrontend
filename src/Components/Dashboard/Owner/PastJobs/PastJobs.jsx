@@ -59,7 +59,7 @@ export default function PastJobs(props) {
 
     return (
         <div className="past-jobs-container">
-            <h3>This is the Past Jobs Compoennt</h3>
+            <h3>Your Washed Vehicle History</h3>
 
             <table className="table table-striped table-hover">
                 <thead>

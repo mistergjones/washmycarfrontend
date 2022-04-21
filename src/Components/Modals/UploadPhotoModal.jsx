@@ -14,6 +14,10 @@ export default function UploadPhotoModal(props) {
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
 
+    const [showCloseButton, setShowCloseButton] = useState(false);
+
+    const [showSubmitButtonClose, setSubmitButtonClose] = useState(false);
+
     const { request: updateBookingThatIsWasherCompleted } = useApi(
         bookingsApi.updateBookingThatIsWasherCompleted
     );
@@ -38,6 +42,12 @@ export default function UploadPhotoModal(props) {
             booking_id: props.booking_id,
         };
         const result = await updateBookingThatIsWasherCompleted(data);
+
+        console.log("REsult is:", result);
+        if (result.status == 200) {
+            setShowCloseButton(true);
+            setSubmitButtonClose(true);
+        }
     };
 
     return (
@@ -79,12 +89,22 @@ export default function UploadPhotoModal(props) {
                     </div>
 
                     <div className="modal-footer">
-                        <button
-                            className="btn btn-primary"
-                            onClick={props.onClose}
-                        >
-                            Back
-                        </button>
+                        {!showCloseButton ? (
+                            <button
+                                className="btn btn-primary"
+                                onClick={props.onClose}
+                            >
+                                Back
+                            </button>
+                        ) : (
+                            <button
+                                className="btn btn-primary"
+                                onClick={props.onClose}
+                            >
+                                Close
+                            </button>
+                        )}
+
                         {url && (
                             <button
                                 className="btn btn-primary"

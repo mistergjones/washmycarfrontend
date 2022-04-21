@@ -16,7 +16,7 @@ export default function HomeScreenContent() {
 
     return (
         <>
-            <h3>This is the homescreen H3 content</h3>
+            {/* <h3>This is the homescreen H3 content</h3> */}
 
             <div className="hsc-form">
                 <div className="hsc-lottie-container">

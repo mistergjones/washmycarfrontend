@@ -1,12 +1,11 @@
-.form-container {
-    width: 80%;
-    background-color: white;
-    /* margin: 0 auto; */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
+.open-listings-container {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2rem;
+
+    height: 80vh;
+    overflow-x: auto;
+
     border: none;
     border-radius: 1rem;
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);

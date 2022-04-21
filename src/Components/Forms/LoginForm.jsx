@@ -30,16 +30,16 @@ export default function LoginForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("LOGIN -> handleSubmit -> Form Inputs-> ", formInputs);
+        //console.log("LOGIN -> handleSubmit -> Form Inputs-> ", formInputs);
         // need to use the clien api to get the informatin
         const response = await loginUser(formInputs);
-        console.log("The Specific suer is:", response);
+        //console.log("The Specific suer is:", response);
 
         setUser(jwtService.getUserFromResponseToken(response));
     };
     return (
         <div>
-            <form className="lsc-form" action="" method="POST">
+            <form className="form-container" action="" method="POST">
                 <h3>Login Here!</h3>
                 <div className="mb-1 row p-0 m-0">
                     <label htmlFor="email">Email:</label>
@@ -65,7 +65,10 @@ export default function LoginForm() {
                     />
                 </div>
 
-                <button className="btn btn-primary" onClick={handleSubmit}>
+                <button
+                    className="btn btn-primary mt-3 mb-3"
+                    onClick={handleSubmit}
+                >
                     Submit
                 </button>
             </form>

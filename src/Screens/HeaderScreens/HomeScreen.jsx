@@ -8,7 +8,7 @@ export default function HomeScreen() {
         <div>
             <MasterScreen
                 ScreenComponent={HomeScreenContent}
-                heading="02/03/22 Welcome to Wash My Car (under development)"
+                heading="Welcome to Wash My Car (prototype)"
             />
         </div>
     );

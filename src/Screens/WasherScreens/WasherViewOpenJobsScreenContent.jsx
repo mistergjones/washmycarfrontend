@@ -61,7 +61,7 @@ export default function WasherViewOpenJobsScreenContent() {
 
     return (
         <div className="glen">
-            <h3>Washer can view jobs screen</h3>
+            {/* <h3>Washer can view jobs screen</h3> */}
             {isDataLoaded && isWasherLoaded && (
                 <ShowOpenListings
                     data={allListings}

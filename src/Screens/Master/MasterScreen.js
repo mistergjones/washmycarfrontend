@@ -36,9 +36,9 @@ export default function MasterScreen({ ScreenComponent, heading }) {
             <div className="content-container">
                 <ScreenComponent />
             </div>
-            <div className="footer-container">
+            {/* <div className="footer-container">
                 <Footer />
-            </div>
+            </div> */}
         </div>
     );
 }

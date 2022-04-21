@@ -8,7 +8,7 @@ export default function LoginScreenContent() {
     return (
         <div>
             <ProfileRedirect />
-            <h1>This is the Llogin content screen</h1>
+            <h1>Login to use our services</h1>
             <LoginForm />
         </div>
     );

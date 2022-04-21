@@ -6,6 +6,12 @@
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
-    border: 3px solid black;
+    /* border: 3px solid black; */
     padding: 3rem;
+
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.24);
 }

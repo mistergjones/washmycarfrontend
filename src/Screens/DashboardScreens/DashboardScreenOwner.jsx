@@ -7,7 +7,7 @@ export default function DashboardScreenContent() {
         <div>
             <MasterScreen
                 ScreenComponent={DashboardScreenOwnerContent}
-                heading="Both DAshboard Screen Contents"
+                heading="Dashboard"
             />
         </div>
     );

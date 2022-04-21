@@ -89,7 +89,7 @@ export default function SignUpForm() {
     return (
         <div>
             <ProfileRedirect />
-            <h1>This is the signup content screen</h1>
+            {/* <h1>This is the signup content screen</h1> */}
 
             <form className="su-form" method="POST">
                 <h3>Sign Up Here!</h3>

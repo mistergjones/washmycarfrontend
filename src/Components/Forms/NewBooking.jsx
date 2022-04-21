@@ -36,7 +36,7 @@ export default function NewBooking() {
         try {
             const response = await postNewBooking(formInputs);
 
-            console.log("Inserting a New Booking", response);
+            // console.log("Inserting a New Booking", response);
         } catch (error) {
             console.log("There was an error inserting a booking", error);
         }
@@ -44,7 +44,7 @@ export default function NewBooking() {
 
     return (
         <div>
-            <h3>This is the new booking form</h3>
+            {/* <h3>This is the new booking form</h3> */}
 
             <form className="new-booking-form-container" action="">
                 <h3>Create your new car wash session</h3>

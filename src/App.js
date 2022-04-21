@@ -12,6 +12,7 @@ import OwnerBookingScreen from "./Screens/OwnerScreens/OwnerBookingScreen";
 import OwnerProfileEditScreen from "./Screens/OwnerScreens/OwnerProfileEditScreen";
 import WasherProfileEditScreen from "./Screens/WasherScreens/WasherProfileEditScreen";
 import WasherViewOpenJobsScreen from "./Screens/WasherScreens/WasherViewOpenJobsScreen";
+import WasherViewChartsScreen from "./Screens/WasherScreens/WasherViewChartsScreen";
 
 import ProtectedRoute from "./Components/protectedRoute";
 
@@ -71,6 +72,10 @@ function App() {
                         <Route
                             path={routes.NEW_LISTINGS}
                             element={<WasherViewOpenJobsScreen />}
+                        />
+                        <Route
+                            path={routes.WASHER_VIEW_CHARTS}
+                            element={<WasherViewChartsScreen />}
                         />
                     </Routes>
                 </Router>

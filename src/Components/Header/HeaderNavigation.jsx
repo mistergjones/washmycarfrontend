@@ -46,6 +46,14 @@ export default function HeaderNavigation() {
                     </li>
                 )}
 
+                {type === "W" && user.is_profile_established && (
+                    <li>
+                        <NavLink to={routes.WASHER_VIEW_CHARTS}>
+                            View Charts
+                        </NavLink>
+                    </li>
+                )}
+
                 {!user && (
                     <li>
                         <NavLink to={routes.SIGNUP}>SignUp</NavLink>
