@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Walk My dog - Connecting Dog Owners with Dog Walkers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
 
-## Available Scripts
+-   [Overview](#overview)
+    -   [Screenshot](#screenshot)
+    -   [Links](#links)
+-   [The process](#the-process)
+    -   [Built with](#built-with)
+    -   [Key Learnings](#key-learnings)
+    -   [Continued development](#continued-development)
+    -   [Useful resources](#useful-resources)
+-   [Authors](#authors)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+The basic concept of this website is to allow vehicle owners to list their cars to be washed by car washers. Car owner's list their vehicles and pay a set price for each vehicle type. Car washers can view what jobs are available and lock-in a particular date/time-slot.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Screenshot
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Example screenshot](screenshot.png)
 
-### `npm test`
+### Links
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   Solution URL: []
+-   Solution Code Frontend: [https://github.com/mistergjones/washmycarfrontend]
+-   Solution Code Backend: [https://github.com/mistergjones/washmycarbackend]
 
-### `npm run build`
+## The process
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   Established the idea.
+-   Whiteboard / developed UI flows.
+-   Create database table structure (normalised).
+-   Identify key technologies (i.e. Axios, Node.js, Cloudinary, Bcrypt) that will for part of the solution.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   Semantic HTML5 markup
+-   React (for Frontend)
+-   JavaScript / Node.js (for WAF)
+-   Database (Postgres for storing data)
+-   Axios / APIs (for GETing and POSTing data)
+-   Lottie (for animated pics)
+-   Custom functions
+-   Bcrypt (for encryption)
+-   ReCharts (for charting)
+-   JWT (for website cookies)
+-   Cloudinary (for image storage)
+-   bingMaps (address search location)
 
-### `npm run eject`
+### Key Learnings
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-   The use of "Rechart.js" for charting capabilities was used. However, it does not provide a solution for having labels and %'s on a pie chart. This was no show stopper but would need to utilise another package should i wish to use this type of functionality.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   BingMaps API has a lot of API functionality. You can use its features to quickly auto-complete on an address search and populate the appropriate text boxes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+-   Utilising GEO-codes to calculate distances between Car Owners & Car Washers was achieved as BingMaps automatically provides Latitutude and Longitude information when a user signs up.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Continued development
 
-## Learn More
+-   Integration with Stripe for payments as per Walk My Dog website.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Authors
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   Glen Jones - [https://www.glenjones.com.au]
